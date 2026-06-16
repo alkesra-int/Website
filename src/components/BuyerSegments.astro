@@ -1,0 +1,31 @@
+---
+import Icon from '@/components/Icon.astro';
+import { buyerSegments, type Lang } from '@/data/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="buyer-section">
+  <div class="section-header">
+    <p class="eyebrow">{lang === 'en' ? 'Built for different buyers' : 'مصمم لاحتياجات مشترين مختلفين'}</p>
+    <h2>{lang === 'en' ? 'One category system, many buying conversations' : 'نظام فئات واحد يناسب أكثر من نوع مشتري'}</h2>
+    <p>
+      {lang === 'en'
+        ? 'Whether the inquiry is for retail shelves, restaurant kitchens, catering use, or household pantry supply, the conversation begins with category, quantity, pack preference, and intended use.'
+        : 'سواء كان الاستفسار لرفوف التجزئة أو مطابخ المطاعم أو التوريد أو مخزون الأسرة، يبدأ النقاش بالفئة والكمية والتغليف المطلوب وطريقة الاستخدام.'}
+    </p>
+  </div>
+  <div class="buyer-grid">
+    {buyerSegments.map((segment) => (
+      <article class="buyer-card reveal-card">
+        <div class="icon-box"><Icon name={segment.icon} /></div>
+        <h3>{segment.title[lang]}</h3>
+        <p>{segment.copy[lang]}</p>
+      </article>
+    ))}
+  </div>
+</section>

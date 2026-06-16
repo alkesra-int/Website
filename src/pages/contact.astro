@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import { common, company, inquiryPrompts, pages } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+const lang = 'en';
+const page = pages.contact;
+const mailSubject = encodeURIComponent('Al Kesra product inquiry');
+const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss foodstuff categories and sourcing options.\n\nCompany:\nPhone:\nMessage:');
+---
+
+<BaseLayout lang={lang} pageKey="contact" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="Pantry ingredients arranged for a foodstuff inquiry"
+  />
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="Contact details"
+      title="Reach Al Kesra in Ras Al Khaimah"
+      copy="Use email now, or build a category inquiry with the quote basket. For a faster reply, include the category, buyer type, approximate quantity, preferred pack size, destination, and any document needs."
+    />
+    <div class="prompt-strip">
+      {inquiryPrompts.map((prompt) => <span>{prompt[lang]}</span>)}
+    </div>
+    <div class="contact-grid">
+      <article class="contact-tile">
+        <span>Email</span>
+        <a href={`mailto:${company.email}?subject=${mailSubject}&body=${mailBody}`}>{company.email}</a>
+      </article>
+      <article class="contact-tile">
+        <span>Location</span>
+        <strong>{company.location[lang]}</strong>
+      </article>
+      <article class="contact-tile">
+        <span>WhatsApp</span>
+        <strong>{company.whatsapp[lang]}</strong>
+      </article>
+      <article class="contact-tile">
+        <span>Phone</span>
+        <strong>{company.phone[lang]}</strong>
+      </article>
+    </div>
+    <div class="contact-actions">
+      <a class="button button-primary" href={`mailto:${company.email}?subject=${mailSubject}&body=${mailBody}`}>{common.ctas.email[lang]}</a>
+      <a class="button button-secondary" href={withBase('/products/')}>{common.ctas.quote[lang]}</a>
+    </div>
+  </section>
+</BaseLayout>

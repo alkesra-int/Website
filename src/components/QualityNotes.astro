@@ -1,0 +1,31 @@
+---
+import Icon from '@/components/Icon.astro';
+import { qualityNotes, type Lang } from '@/data/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="quality-notes">
+  <div class="section-header">
+    <p class="eyebrow">{lang === 'en' ? 'Trust and trade readiness' : 'الثقة والاستعداد التجاري'}</p>
+    <h2>{lang === 'en' ? 'Specific details make better sourcing conversations' : 'التفاصيل المحددة تصنع نقاش توريد أفضل'}</h2>
+    <p>
+      {lang === 'en'
+        ? 'Quality conversations should be specific: product suitability, packaging condition, labeling needs, shelf expectations, and any documents required by the buyer or channel.'
+        : 'ينبغي أن تكون مناقشات الجودة محددة: ملاءمة المنتج، حالة التغليف، احتياجات الملصقات، توقعات التخزين، وأي مستندات يطلبها المشتري أو قناة البيع.'}
+    </p>
+  </div>
+  <div class="quality-note-grid">
+    {qualityNotes.map((note) => (
+      <article class="quality-note reveal-card">
+        <Icon name={note.icon} />
+        <h3>{note.title[lang]}</h3>
+        <p>{note.copy[lang]}</p>
+      </article>
+    ))}
+  </div>
+</section>

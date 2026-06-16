@@ -1,0 +1,35 @@
+---
+import { common, company, type Lang } from '@/data/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<aside class="quote-basket" aria-live="polite" data-quote-basket>
+  <button class="quote-basket__toggle" type="button" data-quote-toggle aria-expanded="false">
+    <span>{common.quote.title[lang]}</span>
+    <strong data-quote-count>0</strong>
+  </button>
+  <div class="quote-basket__panel" data-quote-panel hidden>
+    <div class="quote-basket__header">
+      <h2>{common.quote.title[lang]}</h2>
+      <button type="button" data-quote-close aria-label={lang === 'en' ? 'Close quote basket' : 'إغلاق سلة طلب السعر'}>×</button>
+    </div>
+    <p class="quote-basket__empty" data-quote-empty>{common.quote.empty[lang]}</p>
+    <ul class="quote-basket__items" data-quote-items></ul>
+    <label class="quote-basket__field">
+      <span>{lang === 'en' ? 'Add inquiry note' : 'أضف ملاحظة للاستفسار'}</span>
+      <textarea data-quote-note rows="3" placeholder={lang === 'en' ? 'Quantity, buyer type, pack size, destination...' : 'الكمية، نوع المشتري، حجم العبوة، الوجهة...'}></textarea>
+    </label>
+    <div class="quote-basket__actions">
+      <button class="button button-secondary" type="button" data-quote-clear>{common.quote.clear[lang]}</button>
+      <button class="button button-secondary" type="button" data-quote-copy>{lang === 'en' ? 'Copy inquiry' : 'نسخ الاستفسار'}</button>
+      <a class="button button-primary is-disabled" href="#" data-quote-send aria-disabled="true">{common.quote.send[lang]}</a>
+    </div>
+    <p class="quote-basket__feedback" data-quote-feedback hidden></p>
+    <p class="quote-basket__note">{common.quote.placeholder[lang]}</p>
+  </div>
+</aside>

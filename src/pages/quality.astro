@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QualityNotes from '@/components/QualityNotes.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import { pages } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+const lang = 'en';
+const page = pages.quality;
+---
+
+<BaseLayout lang={lang} pageKey="quality" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="Packaged pantry goods and dry food ingredients"
+  />
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="How we work"
+      title="Practical care before big promises"
+      copy="The site intentionally avoids unverified certifications and superiority claims. Instead, it focuses on sourcing conversations, packaging needs, and clear trade communication."
+    />
+    <div class="values-grid">
+      {page.pillars.map((pillar) => (
+        <article class="value-tile">
+          <h3>{pillar.title[lang]}</h3>
+          <p>{pillar.copy[lang]}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <QualityNotes lang={lang} />
+
+  <section class="process-ribbon" style={`--process-image: url('${withBase('/images/quality-packaging.jpg')}')`}>
+    <div>
+      <p class="eyebrow">Sourcing flow</p>
+      <h2>Inquiry → category clarification → pack and quantity discussion → sourcing coordination → practical next steps.</h2>
+    </div>
+    <p>
+      Al Kesra is ready for practical category conversations today, while leaving space for verified product lists, pack sizes, and documents as the business grows.
+    </p>
+  </section>
+</BaseLayout>

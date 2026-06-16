@@ -1,0 +1,44 @@
+---
+import { common, company, navItems, routes, type Lang, type PageKey } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  lang: Lang;
+  pageKey: PageKey;
+}
+
+const { lang, pageKey } = Astro.props;
+const otherLang: Lang = lang === 'en' ? 'ar' : 'en';
+---
+
+<header class="site-header">
+  <nav class="nav-shell" aria-label={lang === 'en' ? 'Primary navigation' : 'التنقل الرئيسي'}>
+    <a class="brand-link" href={withBase(routes.home[lang])} aria-label={company.name}>
+      <img src={withBase('/images/al-kesra-logo.png')} alt={lang === 'en' ? 'Al Kesra International LLC logo' : 'شعار شركة الكسرة الدولية'} width="150" height="92" />
+      <span>
+        <strong>{lang === 'en' ? 'Al Kesra' : company.arabicName}</strong>
+        <small>{lang === 'en' ? 'International LLC' : 'الدولية ذ.م.م'}</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-menu-toggle>
+      <span class="nav-toggle-lines" aria-hidden="true"></span>
+      <span class="sr-only">{lang === 'en' ? 'Open menu' : 'افتح القائمة'}</span>
+    </button>
+
+    <div class="nav-links" id="primary-menu" data-menu>
+      {navItems.map((item) => (
+        <a class:list={['nav-link', item.key === pageKey && 'is-active']} href={withBase(routes[item.key][lang])} aria-current={item.key === pageKey ? 'page' : undefined}>
+          {item.label[lang]}
+        </a>
+      ))}
+    </div>
+
+    <div class="nav-actions">
+      <a class="language-switch" href={withBase(routes[pageKey][otherLang])} hreflang={otherLang}>
+        {otherLang === 'ar' ? 'عربي' : 'EN'}
+      </a>
+      <a class="nav-quote" href={withBase(routes.products[lang])}>{common.ctas.quote[lang]}</a>
+    </div>
+  </nav>
+</header>

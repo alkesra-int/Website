@@ -1,0 +1,60 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import QuoteBasket from '@/components/QuoteBasket.astro';
+import { company, languages, routes, type Lang, type PageKey } from '@/data/content';
+import { withBase } from '@/utils/paths';
+import '@/styles/global.css';
+
+interface Props {
+  lang: Lang;
+  pageKey: PageKey;
+  title: string;
+  description: string;
+}
+
+const { lang, pageKey, title, description } = Astro.props;
+const direction = languages[lang].dir;
+const alternateLang: Lang = lang === 'en' ? 'ar' : 'en';
+const alternatePath = withBase(routes[pageKey][alternateLang]);
+const canonicalPath = withBase(routes[pageKey][lang]);
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? `https://${company.domain}`);
+const alternateUrl = new URL(alternatePath, Astro.site ?? `https://${company.domain}`);
+const englishUrl = new URL(withBase(routes[pageKey].en), Astro.site ?? `https://${company.domain}`);
+const arabicUrl = new URL(withBase(routes[pageKey].ar), Astro.site ?? `https://${company.domain}`);
+---
+
+<!doctype html>
+<html lang={languages[lang].locale} dir={direction}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="ar" href={arabicUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(withBase('/images/hero-ingredients.jpg'), Astro.site ?? `https://${company.domain}`)} />
+    <meta name="theme-color" content="#173F35" />
+  </head>
+  <body data-lang={lang}>
+    <a class="skip-link" href="#main">{lang === 'en' ? 'Skip to content' : 'تجاوز إلى المحتوى'}</a>
+    <Header lang={lang} pageKey={pageKey} />
+    <main id="main">
+      <slot />
+    </main>
+    <QuoteBasket lang={lang} />
+    <Footer lang={lang} />
+    <script src={withBase('/scripts/navigation.js')} defer></script>
+    <script src={withBase('/scripts/parallax.js')} defer></script>
+    <script src={withBase('/scripts/product-explorer.js')} defer></script>
+    <script src={withBase('/scripts/route-story.js')} defer></script>
+    <script src={withBase('/scripts/quote-basket.js')} defer></script>
+  </body>
+</html>

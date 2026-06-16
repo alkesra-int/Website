@@ -1,0 +1,38 @@
+---
+import Icon from '@/components/Icon.astro';
+import { categories, common, type Lang } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  lang: Lang;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+---
+
+<div class:list={['category-grid', compact && 'category-grid--compact']}>
+  {categories.map((category) => (
+    <article class="category-tile" style={`--category-accent: ${category.accent}`}>
+      <div class="category-tile__media">
+        <img src={withBase(category.image)} alt={category.title[lang]} loading="lazy" width="720" height="540" />
+      </div>
+      <div class="category-tile__body">
+        <div class="category-tile__icon"><Icon name="package" /></div>
+        <h3>{category.title[lang]}</h3>
+        <p>{category.copy[lang]}</p>
+        {!compact && <small>{lang === 'en' ? 'Best for: ' : 'مناسبة لـ: '}{category.bestFor[lang]}</small>}
+        <button
+          class="category-add"
+          type="button"
+          data-quote-add
+          data-id={category.id}
+          data-title-en={category.title.en}
+          data-title-ar={category.title.ar}
+        >
+          {common.quote.add[lang]}
+        </button>
+      </div>
+    </article>
+  ))}
+</div>

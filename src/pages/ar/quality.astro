@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QualityNotes from '@/components/QualityNotes.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import { pages } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+const lang = 'ar';
+const page = pages.quality;
+---
+
+<BaseLayout lang={lang} pageKey="quality" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="مواد غذائية معبأة ومكونات جافة"
+  />
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="طريقة عملنا"
+      title="عناية عملية قبل الوعود الكبيرة"
+      copy="يتجنب الموقع عمداً الادعاءات غير الموثقة حول الشهادات أو الأفضلية، ويركز على نقاشات التوريد واحتياجات التغليف والتواصل التجاري الواضح."
+    />
+    <div class="values-grid">
+      {page.pillars.map((pillar) => (
+        <article class="value-tile">
+          <h3>{pillar.title[lang]}</h3>
+          <p>{pillar.copy[lang]}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <QualityNotes lang={lang} />
+
+  <section class="process-ribbon" style={`--process-image: url('${withBase('/images/quality-packaging.jpg')}')`}>
+    <div>
+      <p class="eyebrow">تدفق التوريد</p>
+      <h2>استفسار → توضيح الفئة → مناقشة العبوة والكمية → تنسيق التوريد → خطوات عملية تالية.</h2>
+    </div>
+    <p>
+      الكسرة جاهزة حالياً لنقاشات عملية حول الفئات، مع مساحة لإضافة قوائم منتجات وأوزان ومستندات موثقة مع نمو العمل.
+    </p>
+  </section>
+</BaseLayout>

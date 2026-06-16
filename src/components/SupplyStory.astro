@@ -1,0 +1,35 @@
+---
+import Icon from '@/components/Icon.astro';
+import { routeSteps } from '@/data/content';
+import type { Lang } from '@/data/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+---
+
+<section class="supply-story" data-route-story>
+  <div class="section-header">
+    <p class="eyebrow">{lang === 'en' ? 'Supply story' : 'قصة التوريد'}</p>
+    <h2>{lang === 'en' ? 'From Indian harvests to UAE conversations' : 'من محاصيل الهند إلى المشترين في الإمارات'}</h2>
+    <p>
+      {lang === 'en'
+        ? 'The India story stays subtle and practical: origin, category focus, trading coordination, and direct buyer support.'
+        : 'تظهر قصة الهند بشكل عملي وهادئ: مصدر واضح، فئات مركزة، تنسيق تجاري، ودعم مباشر للمشترين.'}
+    </p>
+  </div>
+  <ol class="story-steps" aria-label={lang === 'en' ? 'Supply route steps' : 'خطوات مسار التوريد'}>
+    {routeSteps.map((step, index) => (
+      <li data-route-step class:list={[index === 0 && 'is-active']}>
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <div class="story-step-icon"><Icon name={step.icon} /></div>
+        <strong>{step.title[lang]}</strong>
+        <em>{step.label[lang]}</em>
+        <p>{step.copy[lang]}</p>
+      </li>
+    ))}
+  </ol>
+</section>

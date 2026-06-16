@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import { pages } from '@/data/content';
+
+const lang = 'ar';
+const page = pages.about;
+---
+
+<BaseLayout lang={lang} pageKey="about" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="مكونات غذائية ومواد مخزون أساسية للتجارة"
+  />
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="من نحن"
+      title="شركة مواد غذائية في رأس الخيمة بتركيز على السلع الهندية الأساسية"
+      copy="تربط الكسرة فئات غذائية هندية يومية بالمشترين في الإمارات من خلال تواصل عملي ومجموعة منتجات مركزة."
+    />
+    <div class="values-grid">
+      {page.values.map((value) => (
+        <article class="value-tile">
+          <h3>{value.title[lang]}</h3>
+          <p>{value.copy[lang]}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="split-section split-section--dark">
+    <div>
+      <p class="eyebrow">الرؤية</p>
+      <h2>أن نجلب المواد الغذائية الهندية الموثوقة إلى موائد العالم من خلال توريد يعتمد على الإمارات.</h2>
+    </div>
+    <p>
+      مهمتنا هي توريد السلع الغذائية الهندية الأساسية باتساق وعناية وخدمة سريعة الاستجابة للمطاعم والتجار وفرق التموين والأسر.
+    </p>
+  </section>
+</BaseLayout>

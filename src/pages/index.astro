@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BuyerSegments from '@/components/BuyerSegments.astro';
+import CategoryGrid from '@/components/CategoryGrid.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import SupplyStory from '@/components/SupplyStory.astro';
+import { company, pages } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+const lang = 'en';
+const page = pages.home;
+---
+
+<BaseLayout lang={lang} pageKey="home" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="Premium Indian foodstuff ingredients arranged for Al Kesra"
+  />
+
+  <section class="trust-strip" aria-label="Al Kesra highlights">
+    {page.stats.map((item) => <span>{item[lang]}</span>)}
+    <span>{company.slogan[lang]}</span>
+  </section>
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="What we supply"
+      title="A focused pantry of trade-ready staples"
+      copy="Al Kesra starts with a simple trading focus: connect familiar Indian pantry categories with UAE buyers who need clear options, practical quantities, and responsive follow-up."
+    />
+    <CategoryGrid lang={lang} compact />
+  </section>
+
+  <BuyerSegments lang={lang} />
+
+  <SupplyStory lang={lang} />
+
+  <section class="editorial-band">
+    <div>
+      <p class="eyebrow">Trade rhythm</p>
+      <h2>From a category question to a practical sourcing conversation</h2>
+      <p>
+        The first version keeps the catalogue intentionally clear. Buyers can choose categories today, then refine product type, pack preference, approximate quantity, and destination during the next conversation.
+      </p>
+    </div>
+    <img src={withBase('/images/products-spread.jpg')} alt="Indian grains, pulses, and spices arranged for trade inquiry" loading="lazy" width="900" height="700" />
+  </section>
+</BaseLayout>

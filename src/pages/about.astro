@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import { pages } from '@/data/content';
+
+const lang = 'en';
+const page = pages.about;
+---
+
+<BaseLayout lang={lang} pageKey="about" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="Foodstuff trading ingredients and pantry staples"
+  />
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="Who we are"
+      title="A Ras Al Khaimah foodstuff company with an Indian staples focus"
+      copy="Al Kesra connects everyday Indian food categories with UAE buyers through practical communication and a focused product range."
+    />
+    <div class="values-grid">
+      {page.values.map((value) => (
+        <article class="value-tile">
+          <h3>{value.title[lang]}</h3>
+          <p>{value.copy[lang]}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="split-section split-section--dark">
+    <div>
+      <p class="eyebrow">Vision</p>
+      <h2>To bring India's trusted food essentials to global tables through reliable UAE-based supply.</h2>
+    </div>
+    <p>
+      Our mission is to source and supply Indian foodstuff essentials with consistency, care, and responsive service for restaurants, retailers, caterers, and households.
+    </p>
+  </section>
+</BaseLayout>

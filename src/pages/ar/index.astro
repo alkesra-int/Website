@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BuyerSegments from '@/components/BuyerSegments.astro';
+import CategoryGrid from '@/components/CategoryGrid.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import SupplyStory from '@/components/SupplyStory.astro';
+import { company, pages } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+const lang = 'ar';
+const page = pages.home;
+---
+
+<BaseLayout lang={lang} pageKey="home" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="مواد غذائية هندية فاخرة مرتبة للكسرة"
+  />
+
+  <section class="trust-strip" aria-label="مميزات الكسرة">
+    {page.stats.map((item) => <span>{item[lang]}</span>)}
+    <span>{company.slogan[lang]}</span>
+  </section>
+
+  <section class="content-band">
+    <SectionHeader
+      eyebrow="ما نوفره"
+      title="مخزون مركز من السلع الأساسية الجاهزة للتجارة"
+      copy="تنطلق الكسرة من فكرة تجارية واضحة: ربط فئات الغذاء الهندية المعروفة بالمشترين في الإمارات ممن يحتاجون إلى خيارات واضحة وكميات عملية وتواصل سريع."
+    />
+    <CategoryGrid lang={lang} compact />
+  </section>
+
+  <BuyerSegments lang={lang} />
+
+  <SupplyStory lang={lang} />
+
+  <section class="editorial-band">
+    <div>
+      <p class="eyebrow">إيقاع تجاري</p>
+      <h2>من سؤال حول الفئة إلى نقاش توريد عملي</h2>
+      <p>
+        يبقى الكتالوج الأول واضحاً عن قصد. يمكن للمشترين اختيار الفئات اليوم، ثم توضيح نوع المنتج وحجم العبوة والكمية التقريبية والوجهة في النقاش التالي.
+      </p>
+    </div>
+    <img src={withBase('/images/products-spread.jpg')} alt="حبوب وبقوليات وتوابل هندية مرتبة للاستفسار التجاري" loading="lazy" width="900" height="700" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import type { Lang } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  lang: Lang;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  image: string;
+  imageAlt: string;
+}
+
+const { lang, eyebrow, title, lead, image, imageAlt } = Astro.props;
+---
+
+<section class="page-hero" style={`--hero-image: url('${withBase(image)}')`} aria-label={imageAlt}>
+  <div class="page-hero__image" data-parallax-bg></div>
+  <div class="page-hero__texture" aria-hidden="true"></div>
+  <div class="page-hero__inner" data-parallax-content>
+    <div class="page-hero__copy">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="hero-lead">{lead}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href={withBase(lang === 'en' ? '/products/' : '/ar/products/')}>{lang === 'en' ? 'Explore products' : 'تصفح المنتجات'}</a>
+        <a class="button button-secondary" href={withBase(lang === 'en' ? '/contact/' : '/ar/contact/')}>{lang === 'en' ? 'Contact us' : 'تواصل معنا'}</a>
+      </div>
+    </div>
+    <div class="hero-panel reveal-card">
+      <span>{lang === 'en' ? 'Sourcing route' : 'مسار التوريد'}</span>
+      <strong>{lang === 'en' ? 'India' : 'الهند'}</strong>
+      <i></i>
+      <strong>{lang === 'en' ? 'UAE' : 'الإمارات'}</strong>
+      <small>{lang === 'en' ? 'Category-led foodstuff inquiries' : 'استفسارات غذائية حسب الفئات'}</small>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import ProductExplorer from '@/components/ProductExplorer.astro';
+import { pages } from '@/data/content';
+
+const lang = 'en';
+const page = pages.products;
+---
+
+<BaseLayout lang={lang} pageKey="products" title={page.meta[lang].title} description={page.meta[lang].description}>
+  <PageHero
+    lang={lang}
+    eyebrow={page.hero.eyebrow[lang]}
+    title={page.hero.title[lang]}
+    lead={page.hero.lead[lang]}
+    image={page.hero.image}
+    imageAlt="Assorted grains, pulses, and spices for foodstuff trading"
+  />
+
+  <ProductExplorer lang={lang} />
+</BaseLayout>
