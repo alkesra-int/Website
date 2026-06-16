@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://alkesra.com',
+  site: 'https://www.alkesra.com',
   base: '/',
   output: 'static'
 });
