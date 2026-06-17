@@ -18,9 +18,9 @@ const { lang, compact = false } = Astro.props;
         <img src={withBase(category.image)} alt={category.title[lang]} loading="lazy" width="720" height="540" />
       </div>
       <div class="category-tile__body">
-        <div class="category-tile__icon"><Icon name="package" /></div>
+        <div class="category-tile__icon"><Icon name={category.icon} /></div>
         <h3>{category.title[lang]}</h3>
-        <p>{category.copy[lang]}</p>
+        <p>{compact ? category.heroLine[lang] : category.copy[lang]}</p>
         {!compact && <small>{lang === 'en' ? 'Best for: ' : 'مناسبة لـ: '}{category.bestFor[lang]}</small>}
         <button
           class="category-add"

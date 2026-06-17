@@ -29,6 +29,8 @@
   const basket = document.querySelector('[data-quote-basket]');
   if (!basket) return;
 
+  const whatsapp = basket.dataset.whatsapp || '';
+
   const panel = basket.querySelector('[data-quote-panel]');
   const toggle = basket.querySelector('[data-quote-toggle]');
   const close = basket.querySelector('[data-quote-close]');
@@ -40,9 +42,12 @@
   const copy = basket.querySelector('[data-quote-copy]');
   const note = basket.querySelector('[data-quote-note]');
   const feedback = basket.querySelector('[data-quote-feedback]');
-  const addButtons = Array.from(document.querySelectorAll('[data-quote-add]'));
 
   let items = readItems();
+
+  function quoteButtons() {
+    return Array.from(document.querySelectorAll('[data-quote-add]'));
+  }
 
   function readItems() {
     try {
@@ -82,7 +87,7 @@
   }
 
   function messageHref() {
-    return `https://wa.me/?text=${encodeURIComponent(buildMessage())}`;
+    return `https://wa.me/${whatsapp}?text=${encodeURIComponent(buildMessage())}`;
   }
 
   function buildMessage() {
@@ -126,7 +131,7 @@
       list.appendChild(li);
     });
 
-    addButtons.forEach((button) => {
+    quoteButtons().forEach((button) => {
       const selected = items.some((item) => item.id === button.dataset.id);
       button.classList.toggle('is-selected', selected);
       button.setAttribute('aria-pressed', String(selected));
@@ -182,20 +187,24 @@
     if (items.length === 0) event.preventDefault();
   });
 
-  addButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const next = {
-        id: button.dataset.id,
-        titleEn: button.dataset.titleEn,
-        titleAr: button.dataset.titleAr
-      };
-      const exists = items.some((item) => item.id === next.id);
-      items = exists ? items.filter((item) => item.id !== next.id) : [...items, next];
-      writeItems();
-      render();
-      openPanel();
-      if (!exists) flash(lang === 'ar' ? 'تمت إضافة الفئة' : 'Category added');
-    });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-quote-add]');
+    if (!button) return;
+
+    const next = {
+      id: button.dataset.id,
+      titleEn: button.dataset.titleEn,
+      titleAr: button.dataset.titleAr
+    };
+
+    if (!validIds.has(next.id) || !next.titleEn || !next.titleAr) return;
+
+    const exists = items.some((item) => item.id === next.id);
+    items = exists ? items.filter((item) => item.id !== next.id) : [...items, next];
+    writeItems();
+    render();
+    openPanel();
+    if (!exists) flash(lang === 'ar' ? 'تمت إضافة الفئة' : 'Category added');
   });
 
   render();

@@ -1,0 +1,45 @@
+---
+import { company } from '@/data/content';
+import { withBase } from '@/utils/paths';
+import '@/styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — Al Kesra International LLC</title>
+    <meta name="description" content="The page you're looking for doesn't exist." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0f2e24" />
+    <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="nf-page">
+      <a class="nf-logo" href={withBase('/')}>
+        <img src={withBase('/images/al-kesra-logo.png')} alt="Al Kesra International LLC" width="96" height="96" />
+      </a>
+
+      <p class="nf-code">404</p>
+      <h1 class="nf-heading">Page not found</h1>
+      <p class="nf-copy">The page you're looking for doesn't exist or has moved.<br/>Head back and keep exploring.</p>
+
+      <nav class="nf-nav">
+        <a class="button button-primary" href={withBase('/')}>Home</a>
+        <a class="button nf-ghost" href={withBase('/products/')}>Products</a>
+        <a class="button nf-ghost" href={withBase('/contact/')}>Contact</a>
+      </nav>
+
+      <p class="nf-ar">
+        الصفحة غير موجودة —
+        <a href={withBase('/ar/')}>الرئيسية</a>
+      </p>
+
+      <p class="nf-brand">{company.name} · {company.location.en.split(',').slice(-2).join(',').trim()}</p>
+    </div>
+  </body>
+</html>

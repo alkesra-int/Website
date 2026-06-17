@@ -1,5 +1,6 @@
 ---
-import { company, navItems, routes, type Lang } from '@/data/content';
+import Icon from '@/components/Icon.astro';
+import { categories, company, navItems, routes, type Lang } from '@/data/content';
 import { withBase } from '@/utils/paths';
 
 interface Props {
@@ -12,24 +13,43 @@ const { lang } = Astro.props;
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src={withBase('/images/al-kesra-logo.png')} alt={lang === 'en' ? 'Al Kesra International LLC logo' : 'شعار شركة الكسرة الدولية'} width="120" height="74" />
-      <p>{company.slogan[lang]}</p>
+      <a href={withBase(routes.home[lang])} aria-label={company.name}>
+        <img src={withBase('/images/al-kesra-logo.png')} alt={lang === 'en' ? 'Al Kesra International LLC logo' : 'شعار شركة الكسرة الدولية'} width="120" height="74" />
+      </a>
+      <p class="eyebrow">{lang === 'en' ? 'UAE based foodstuff trading' : 'تجارة مواد غذائية من الإمارات'}</p>
+      <h2>{company.slogan[lang]}</h2>
+      <p>{lang === 'en' ? 'Indian foodstuff trading from Ras Al Khaimah — supplying rice, flour, pulses, spices, oils, and packaged goods to UAE and GCC buyers.' : 'تجارة مواد غذائية هندية من رأس الخيمة — نورد الأرز والدقيق والبقوليات والتوابل والزيوت والبضائع المعبأة لمشتري الإمارات والخليج.'}</p>
     </div>
 
     <nav class="footer-links" aria-label={lang === 'en' ? 'Footer navigation' : 'تنقل التذييل'}>
+      <strong>{lang === 'en' ? 'Explore' : 'تصفح'}</strong>
       {navItems.map((item) => (
         <a href={withBase(routes[item.key][lang])}>{item.label[lang]}</a>
       ))}
     </nav>
 
+    <div class="footer-categories" aria-label={lang === 'en' ? 'Product categories' : 'فئات المنتجات'}>
+      <strong>{lang === 'en' ? 'Our categories' : 'فئاتنا'}</strong>
+      <div>
+        {categories.map((category) => (
+          <span style={`--category-accent: ${category.accent}`}>
+            <Icon name={category.icon} />
+            {category.short[lang]}
+          </span>
+        ))}
+      </div>
+    </div>
+
     <address class="footer-contact">
+      <strong>{lang === 'en' ? 'Contact' : 'تواصل'}</strong>
       <span>{lang === 'en' ? company.name : 'شركة الكسرة الدولية ذ.م.م'}</span>
       <span>{company.location[lang]}</span>
       <a href={`mailto:${company.email}`}>{company.email}</a>
+      <a href={`https://wa.me/${company.whatsapp.replace(/\D/g, '')}`}>{lang === 'en' ? 'WhatsApp:' : 'واتساب:'} {company.whatsapp}</a>
+      <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{lang === 'en' ? 'Phone:' : 'هاتف:'} {company.phone}</a>
     </address>
   </div>
   <div class="footer-bottom">
     <span>© {new Date().getFullYear()} {lang === 'en' ? company.name : company.arabicName}</span>
-    <span>{lang === 'en' ? company.slogan.en : company.slogan.ar}</span>
   </div>
 </footer>

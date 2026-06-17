@@ -13,17 +13,18 @@ const { lang } = Astro.props;
 <section class="product-explorer" data-product-explorer>
   <div class="product-explorer__intro">
     <div>
-      <p class="eyebrow">{lang === 'en' ? 'Interactive product finder' : 'مستكشف الفئات التفاعلي'}</p>
-      <h2>{lang === 'en' ? 'Start with the buyer, then choose the staple categories' : 'ابدأ بنوع المشتري ثم اختر الفئات الأساسية'}</h2>
+      <p class="eyebrow">{lang === 'en' ? 'Our products' : 'منتجاتنا'}</p>
+      <h2>{lang === 'en' ? 'Six Indian foodstuff categories, ready to supply' : 'ست فئات من المواد الغذائية الهندية، جاهزة للتوريد'}</h2>
       <p>
         {lang === 'en'
-          ? 'Use the categories as a starting point, not a fixed catalogue. Share product type, expected quantity, preferred pack size, and buyer segment to guide the next sourcing discussion.'
-          : 'استخدم الفئات كنقطة بداية وليست كتالوجاً نهائياً. شارك نوع المنتج والكمية المتوقعة وحجم العبوة المفضل وفئة المشتري لتسهيل نقاش التوريد التالي.'}
+          ? 'Browse by buyer type, explore each category, and add what you need to your quote request. Al Kesra will follow up with pricing, pack options, and availability.'
+          : 'تصفح حسب نوع المشتري، واستكشف كل فئة، وأضف ما تحتاجه إلى طلب الاستفسار. سيتابع معك فريق الكسرة في الأسعار وخيارات التعبئة والتوفر.'}
       </p>
     </div>
     <div class="explorer-meter" aria-hidden="true">
       <Icon name="route" />
-      <span>{lang === 'en' ? 'Category-led inquiry' : 'استفسار حسب الفئة'}</span>
+      <span>{lang === 'en' ? 'India staples' : 'سلع هندية أساسية'}</span>
+      <i>{lang === 'en' ? 'Ras Al Khaimah based' : 'من رأس الخيمة'}</i>
     </div>
   </div>
 
@@ -37,9 +38,15 @@ const { lang } = Astro.props;
 
   <div class="explorer-grid">
     {categories.map((category) => (
-      <article class="explorer-card reveal-card" style={`--category-accent: ${category.accent}`} data-segments={category.segments.join(',')}>
+      <article
+        class="explorer-card reveal-card"
+        style={`--category-accent: ${category.accent}`}
+        data-segments={category.segments.join(',')}
+        data-category-card
+      >
         <div class="explorer-card__image">
           <img src={withBase(category.image)} alt={category.title[lang]} loading="lazy" width="900" height="680" />
+          <span class="explorer-card__icon"><Icon name={category.icon} /></span>
         </div>
         <div class="explorer-card__content">
           <div class="explorer-card__topline">
@@ -47,25 +54,85 @@ const { lang } = Astro.props;
             <Icon name="quote" />
           </div>
           <h3>{category.title[lang]}</h3>
-          <p>{category.detail[lang]}</p>
-          <dl>
-            <div>
-              <dt>{lang === 'en' ? 'Best for' : 'مناسبة لـ'}</dt>
-              <dd>{category.bestFor[lang]}</dd>
-            </div>
-          </dl>
-          <button
-            class="category-add"
-            type="button"
-            data-quote-add
-            data-id={category.id}
-            data-title-en={category.title.en}
-            data-title-ar={category.title.ar}
-          >
-            {common.quote.add[lang]}
-          </button>
+          <p>{category.heroLine[lang]}</p>
+          <div class="bubble-row" aria-label={lang === 'en' ? 'Category notes' : 'ملاحظات الفئة'}>
+            {category.bubbles.slice(0, 3).map((bubble) => (
+              <span>
+                <Icon name={bubble.icon} />
+                {bubble.label[lang]}
+              </span>
+            ))}
+          </div>
+          <div class="explorer-card__actions">
+            <button
+              class="category-add"
+              type="button"
+              data-quote-add
+              data-id={category.id}
+              data-title-en={category.title.en}
+              data-title-ar={category.title.ar}
+            >
+              {common.quote.add[lang]}
+            </button>
+            <button
+              class="button button-ghost"
+              type="button"
+              data-category-open={category.id}
+              aria-controls={`category-modal-${category.id}`}
+            >
+              {lang === 'en' ? 'View story' : 'عرض القصة'}
+            </button>
+          </div>
         </div>
       </article>
     ))}
   </div>
+
+  {categories.map((category) => (
+    <div
+      class="category-modal"
+      id={`category-modal-${category.id}`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={`category-modal-title-${category.id}`}
+      data-category-modal={category.id}
+      hidden
+    >
+      <button class="category-modal__backdrop" type="button" data-category-close aria-label={lang === 'en' ? 'Close category details' : 'إغلاق تفاصيل الفئة'}></button>
+      <div class="category-modal__panel" tabindex="-1" style={`--category-accent: ${category.accent}`}>
+        <button class="category-modal__close" type="button" data-category-close aria-label={lang === 'en' ? 'Close category details' : 'إغلاق تفاصيل الفئة'}>×</button>
+        <div class="category-modal__media">
+          <img src={withBase(category.image)} alt={category.title[lang]} loading="lazy" width="1040" height="760" />
+        </div>
+        <div class="category-modal__body">
+          <p class="eyebrow">{lang === 'en' ? 'Category story' : 'قصة الفئة'}</p>
+          <h2 id={`category-modal-title-${category.id}`}>{category.title[lang]}</h2>
+          <p>{category.modalSummary[lang]}</p>
+          <div class="modal-bubbles">
+            {category.bubbles.map((bubble) => (
+              <span>
+                <Icon name={bubble.icon} />
+                {bubble.label[lang]}
+              </span>
+            ))}
+          </div>
+          <div class="modal-actions">
+            <button
+              class="category-add"
+              type="button"
+              data-quote-add
+              data-id={category.id}
+              data-title-en={category.title.en}
+              data-title-ar={category.title.ar}
+            >
+              {common.quote.add[lang]}
+            </button>
+            <button class="button button-ghost" type="button" data-category-close>
+              {lang === 'en' ? 'Continue browsing' : 'متابعة التصفح'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
 </section>

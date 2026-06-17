@@ -1,0 +1,503 @@
+export type Lang = 'en' | 'ar';
+export type PageKey = 'home' | 'about' | 'products' | 'quality' | 'contact';
+
+export const languages: Record<Lang, { label: string; dir: 'ltr' | 'rtl'; locale: string }> = {
+  en: { label: 'English', dir: 'ltr', locale: 'en' },
+  ar: { label: 'العربية', dir: 'rtl', locale: 'ar' }
+};
+
+export const company = {
+  name: 'Al Kesra International LLC',
+  arabicName: 'الكسرة',
+  slogan: {
+    en: "From India's Harvests to the World",
+    ar: 'من محاصيل الهند إلى العالم'
+  },
+  email: 'alkesra.int@gmail.com',
+  phone: '+971 XX XXX XXXX',
+  whatsapp: '+971 XX XXX XXXX',
+  location: {
+    en: 'Ras Al Khaimah, United Arab Emirates',
+    ar: 'رأس الخيمة، الإمارات العربية المتحدة'
+  },
+  domain: 'alkesra.com'
+};
+
+export const routes: Record<PageKey, { en: string; ar: string }> = {
+  home: { en: '/', ar: '/ar/' },
+  about: { en: '/about/', ar: '/ar/about/' },
+  products: { en: '/products/', ar: '/ar/products/' },
+  quality: { en: '/quality/', ar: '/ar/quality/' },
+  contact: { en: '/contact/', ar: '/ar/contact/' }
+};
+
+export const navItems: Array<{ key: PageKey; label: Record<Lang, string> }> = [
+  { key: 'home', label: { en: 'Home', ar: 'الرئيسية' } },
+  { key: 'about', label: { en: 'About', ar: 'عن الشركة' } },
+  { key: 'products', label: { en: 'Products', ar: 'المنتجات' } },
+  { key: 'quality', label: { en: 'Quality', ar: 'الجودة' } },
+  { key: 'contact', label: { en: 'Contact', ar: 'تواصل معنا' } }
+];
+
+export const categories = [
+  {
+    id: 'rice-grains',
+    icon: 'grain',
+    image: '/images/category-rice.jpg',
+    title: { en: 'Rice & Grains', ar: 'الأرز والحبوب' },
+    short: { en: 'Rice & grains', ar: 'الأرز والحبوب' },
+    heroLine: { en: 'Daily grain confidence for shelves and kitchens.', ar: 'ثقة يومية في الحبوب للرفوف والمطابخ.' },
+    copy: {
+      en: 'Essential rice and grain categories for retail shelves, food service, and everyday pantry needs.',
+      ar: 'فئات أساسية من الأرز والحبوب لرفوف التجزئة وخدمات الطعام واحتياجات المخزون اليومية.'
+    },
+    modalSummary: {
+      en: 'Rice and grain inquiries usually begin with usage, expected turnover, and pack preference. This category keeps that first conversation simple for UAE buyers who need dependable pantry staples from an Indian sourcing story.',
+      ar: 'تبدأ استفسارات الأرز والحبوب عادة بالاستخدام المتوقع وحركة الطلب وحجم العبوة. تبقي هذه الفئة الحوار الأول واضحا للمشترين في الإمارات الباحثين عن أساسيات يومية مرتبطة بقصة توريد هندية.'
+    },
+    bubbles: [
+      { icon: 'store', label: { en: 'Retail shelves', ar: 'رفوف التجزئة' } },
+      { icon: 'chef', label: { en: 'Kitchen staples', ar: 'أساسيات المطابخ' } },
+      { icon: 'package', label: { en: 'Pack discussion', ar: 'نقاش العبوات' } }
+    ],
+    detail: {
+      en: 'Built for everyday replenishment conversations, from household pantry shelves to food service kitchens that need steady staple categories.',
+      ar: 'مناسبة لنقاشات التوريد اليومية، من مخزون الأسر إلى مطابخ خدمات الطعام التي تحتاج إلى فئات أساسية ثابتة.'
+    },
+    bestFor: { en: 'Retail shelves, kitchens, pantry supply', ar: 'رفوف التجزئة، المطابخ، مخزون الأسر' },
+    segments: ['retail', 'food-service', 'household', 'wholesale'],
+    accent: '#D8B45A'
+  },
+  {
+    id: 'flour-baking',
+    icon: 'flour',
+    image: '/images/category-flour.jpg',
+    title: { en: 'Flour & Baking', ar: 'الدقيق ومستلزمات الخبز' },
+    short: { en: 'Flour & baking', ar: 'الدقيق والخبز' },
+    heroLine: { en: 'Baking basics for practical trade conversations.', ar: 'أساسيات الخبز لحوارات تجارية عملية.' },
+    copy: {
+      en: 'Practical flour and baking essentials selected for consistent trade and kitchen use.',
+      ar: 'الدقيق ومستلزمات الخبز العملية المختارة لاستخدام تجاري ومطبخي متسق.'
+    },
+    modalSummary: {
+      en: 'Flour and baking essentials work best when the buyer can explain daily usage, kitchen type, and packaging expectations. Al Kesra keeps the category flexible for bakeries, groceries, cafeterias, and food service teams.',
+      ar: 'تنجح فئة الدقيق ومستلزمات الخبز عندما يوضح المشتري الاستخدام اليومي ونوع المطبخ وتوقعات التغليف. تبقي الكسرة هذه الفئة مرنة للمخابز والبقالات والكافتيريات وفرق خدمات الطعام.'
+    },
+    bubbles: [
+      { icon: 'flour', label: { en: 'Baking needs', ar: 'احتياجات الخبز' } },
+      { icon: 'chef', label: { en: 'Food service', ar: 'خدمات الطعام' } },
+      { icon: 'clipboard', label: { en: 'Usage notes', ar: 'تفاصيل الاستخدام' } }
+    ],
+    detail: {
+      en: 'A practical category for bakeries, groceries, cafeterias, and kitchens that want clear sourcing conversations around daily baking needs.',
+      ar: 'فئة عملية للمخابز والبقالات والكافتيريات والمطابخ التي تحتاج إلى نقاش واضح حول احتياجات الخبز اليومية.'
+    },
+    bestFor: { en: 'Bakeries, groceries, cafeterias', ar: 'المخابز، البقالات، الكافتيريات' },
+    segments: ['retail', 'food-service', 'wholesale'],
+    accent: '#D9C2A1'
+  },
+  {
+    id: 'pulses',
+    icon: 'pulse',
+    image: '/images/category-pulses.jpg',
+    title: { en: 'Pulses', ar: 'البقوليات' },
+    short: { en: 'Pulses', ar: 'البقوليات' },
+    heroLine: { en: 'Protein-rich pantry staples with repeat demand.', ar: 'أساسيات غنية بالبروتين وطلبها متكرر.' },
+    copy: {
+      en: 'Focused pulse categories for traditional cooking, catering kitchens, and daily replenishment.',
+      ar: 'فئات مركزة من البقوليات للطهي التقليدي ومطابخ التموين والتوريد اليومي.'
+    },
+    modalSummary: {
+      en: 'Pulses sit close to everyday Indian cooking and repeat pantry demand. The inquiry can stay category-led at first, then move into variety, quantity, and preferred pack details when the buyer is ready.',
+      ar: 'ترتبط البقوليات بالطهي الهندي اليومي وبطلب المخزون المتكرر. يمكن أن يبدأ الاستفسار بالفئة ثم ينتقل إلى النوع والكمية وحجم العبوة عند جاهزية المشتري.'
+    },
+    bubbles: [
+      { icon: 'pulse', label: { en: 'Daily protein', ar: 'بروتين يومي' } },
+      { icon: 'home', label: { en: 'Pantry use', ar: 'استخدام منزلي' } },
+      { icon: 'store', label: { en: 'Repeat demand', ar: 'طلب متكرر' } }
+    ],
+    detail: {
+      en: 'A staple category with strong relevance for Indian cooking, food service menus, household pantry stocking, and repeat retail demand.',
+      ar: 'فئة أساسية مهمة للطهي الهندي وقوائم خدمات الطعام ومخزون الأسر والطلب المتكرر في التجزئة.'
+    },
+    bestFor: { en: 'Catering, home cooking, regular replenishment', ar: 'التموين، الطهي المنزلي، التوريد المتكرر' },
+    segments: ['retail', 'food-service', 'household', 'wholesale'],
+    accent: '#B86D3B'
+  },
+  {
+    id: 'spices',
+    icon: 'spice',
+    image: '/images/category-spices.jpg',
+    title: { en: 'Spices', ar: 'التوابل والبهارات' },
+    short: { en: 'Spices', ar: 'التوابل' },
+    heroLine: { en: 'Flavor-led cues for Indian foodstuff sourcing.', ar: 'ملامح نكهة واضحة لتوريد غذائي هندي.' },
+    copy: {
+      en: 'Spice essentials that bring Indian flavor cues into trade-ready foodstuff supply.',
+      ar: 'أساسيات من التوابل تضيف ملامح النكهة الهندية إلى توريد المواد الغذائية.'
+    },
+    modalSummary: {
+      en: 'Spices make the browsing experience sensory, but the buying path still stays practical: category first, then preferred items, pack needs, and buyer use. It is ideal for groceries, kitchens, and food service menus.',
+      ar: 'تجعل التوابل التجربة حسية، لكن مسار الشراء يبقى عمليا: الفئة أولا ثم الأصناف المطلوبة والعبوات وطريقة الاستخدام. تناسب البقالات والمطابخ وقوائم خدمات الطعام.'
+    },
+    bubbles: [
+      { icon: 'spice', label: { en: 'Indian flavor', ar: 'نكهة هندية' } },
+      { icon: 'chef', label: { en: 'Menu use', ar: 'استخدام القوائم' } },
+      { icon: 'message', label: { en: 'Flexible list', ar: 'قائمة مرنة' } }
+    ],
+    detail: {
+      en: 'A sensory category for buyers who want Indian flavor cues, clear category choices, and flexible product-list conversations.',
+      ar: 'فئة غنية بالنكهة للمشترين الباحثين عن ملامح هندية وخيارات واضحة ونقاشات مرنة حول قائمة المنتجات.'
+    },
+    bestFor: { en: 'Groceries, kitchens, food service', ar: 'البقالات، المطابخ، خدمات الطعام' },
+    segments: ['retail', 'food-service', 'household'],
+    accent: '#A93A24'
+  },
+  {
+    id: 'oils',
+    icon: 'oil',
+    image: '/images/category-oils.jpg',
+    title: { en: 'Oils', ar: 'الزيوت' },
+    short: { en: 'Oils', ar: 'الزيوت' },
+    heroLine: { en: 'Everyday cooking essentials for steady supply.', ar: 'أساسيات طبخ يومية لتوريد مستقر.' },
+    copy: {
+      en: 'Cooking oil categories for businesses and households that need steady pantry essentials.',
+      ar: 'فئات من زيوت الطهي للشركات والأسر التي تحتاج إلى أساسيات غذائية متوفرة.'
+    },
+    modalSummary: {
+      en: 'Oil inquiries often depend on buyer type, usage pattern, and pack preference. This category supports direct conversations for shops, kitchens, households, and food service teams without overclaiming details not yet verified.',
+      ar: 'تعتمد استفسارات الزيوت غالبا على نوع المشتري ونمط الاستخدام وتفضيل العبوة. تدعم هذه الفئة حوارا مباشرا للمتاجر والمطابخ والأسر وفرق خدمات الطعام دون ادعاءات غير موثقة.'
+    },
+    bubbles: [
+      { icon: 'oil', label: { en: 'Cooking use', ar: 'استخدام الطبخ' } },
+      { icon: 'package', label: { en: 'Pack choice', ar: 'اختيار العبوة' } },
+      { icon: 'store', label: { en: 'Shelf demand', ar: 'طلب الرفوف' } }
+    ],
+    detail: {
+      en: 'A daily-use category for food service buyers, retailers, and households where availability and practical discussion matter.',
+      ar: 'فئة يومية الاستخدام لمشتري خدمات الطعام والتجار والأسر حيث يهم توفر المنتج والنقاش العملي.'
+    },
+    bestFor: { en: 'Food service, shops, household kitchens', ar: 'خدمات الطعام، المتاجر، مطابخ الأسر' },
+    segments: ['retail', 'food-service', 'household', 'wholesale'],
+    accent: '#8B9A3C'
+  },
+  {
+    id: 'packaged-goods',
+    icon: 'boxed',
+    image: '/images/category-packaged.jpg',
+    title: { en: 'Canned & Packaged Goods', ar: 'المعلبات والمواد الغذائية المعبأة' },
+    short: { en: 'Packaged goods', ar: 'المواد المعبأة' },
+    heroLine: { en: 'Flexible pantry goods for assortment planning.', ar: 'مواد مخزون مرنة لتخطيط التشكيلة.' },
+    copy: {
+      en: 'Packaged pantry goods for buyers looking for clear categories and responsive sourcing support.',
+      ar: 'مواد غذائية معبأة للمشترين الباحثين عن فئات واضحة ودعم توريد سريع الاستجابة.'
+    },
+    modalSummary: {
+      en: 'Packaged goods leave room for practical assortment planning as the catalog expands. Buyers can start with the category, then share preferred items, quantity, and intended channel for a sharper sourcing conversation.',
+      ar: 'تترك المواد المعبأة مساحة لتخطيط التشكيلة مع توسع الكتالوج. يمكن للمشتري أن يبدأ بالفئة ثم يشارك الأصناف المطلوبة والكمية وقناة البيع المقصودة لحوار توريد أوضح.'
+    },
+    bubbles: [
+      { icon: 'boxed', label: { en: 'Assortment', ar: 'تشكيلة' } },
+      { icon: 'layers', label: { en: 'Future list', ar: 'قائمة مستقبلية' } },
+      { icon: 'message', label: { en: 'Quote ready', ar: 'جاهز للاستفسار' } }
+    ],
+    detail: {
+      en: 'A flexible pantry category for future product-list expansion, retail assortment discussions, and steady packaged-food inquiries.',
+      ar: 'فئة مرنة قابلة للتوسع لاحقاً لقوائم المنتجات ونقاشات تشكيلة التجزئة واستفسارات المواد الغذائية المعبأة.'
+    },
+    bestFor: { en: 'Retail assortment, pantry stock, quote requests', ar: 'تشكيلة التجزئة، مخزون الأسر، طلبات السعر' },
+    segments: ['retail', 'household', 'wholesale'],
+    accent: '#2D6F7A'
+  }
+] as const;
+
+export const segmentFilters = [
+  { id: 'all', label: { en: 'All categories', ar: 'كل الفئات' } },
+  { id: 'retail', label: { en: 'Retail', ar: 'التجزئة' } },
+  { id: 'food-service', label: { en: 'Food service', ar: 'خدمات الطعام' } },
+  { id: 'household', label: { en: 'Household', ar: 'الأسر' } },
+  { id: 'wholesale', label: { en: 'Wholesale', ar: 'الجملة' } }
+] as const;
+
+export const buyerSegments = [
+  {
+    icon: 'store',
+    title: { en: 'Retail and groceries', ar: 'التجزئة والبقالات' },
+    copy: {
+      en: 'Clear staple categories for shelves, replenishment planning, and future product-list expansion.',
+      ar: 'فئات أساسية واضحة للرفوف وتخطيط التوريد والتوسع المستقبلي في قوائم المنتجات.'
+    }
+  },
+  {
+    icon: 'chef',
+    title: { en: 'Restaurants and cafeterias', ar: 'المطاعم والكافتيريات' },
+    copy: {
+      en: 'Ingredient categories suited to kitchens that depend on practical staples and direct communication.',
+      ar: 'فئات مكونات مناسبة للمطابخ التي تعتمد على أساسيات عملية وتواصل مباشر.'
+    }
+  },
+  {
+    icon: 'package',
+    title: { en: 'Wholesale and trade', ar: 'الجملة والتجارة' },
+    copy: {
+      en: 'Category-led discussions for buyers who want to move from inquiry to a useful sourcing conversation.',
+      ar: 'نقاشات مبنية على الفئات للمشترين الراغبين في تحويل الاستفسار إلى حوار توريد عملي.'
+    }
+  },
+  {
+    icon: 'home',
+    title: { en: 'Homes and communities', ar: 'الأسر والمجتمعات' },
+    copy: {
+      en: 'Everyday pantry essentials with an Indian sourcing story and UAE-based contact path.',
+      ar: 'أساسيات يومية للمخزون المنزلي مع قصة توريد هندية ومسار تواصل من الإمارات.'
+    }
+  }
+] as const;
+
+export const routeSteps = [
+  {
+    icon: 'sprout',
+    title: { en: 'Origin', ar: 'المصدر' },
+    label: { en: 'Indian harvests', ar: 'محاصيل الهند' },
+    copy: {
+      en: 'The story begins with Indian staple categories known to regional kitchens and retail buyers.',
+      ar: 'تبدأ القصة بفئات غذائية هندية أساسية مألوفة للمطابخ والمشترين في المنطقة.'
+    }
+  },
+  {
+    icon: 'search',
+    title: { en: 'Selection', ar: 'الاختيار' },
+    label: { en: 'Focused categories', ar: 'فئات مركزة' },
+    copy: {
+      en: 'The first catalog stays clear: six staple groups that make inquiry and sourcing discussions easier.',
+      ar: 'يبقى الكتالوج الأول واضحاً: ست فئات أساسية تجعل الاستفسار ونقاش التوريد أسهل.'
+    }
+  },
+  {
+    icon: 'ship',
+    title: { en: 'Trade', ar: 'التجارة' },
+    label: { en: 'UAE coordination', ar: 'تنسيق من الإمارات' },
+    copy: {
+      en: 'Ras Al Khaimah gives the brand a practical UAE base for buyer conversations and future market reach.',
+      ar: 'تمنح رأس الخيمة العلامة قاعدة عملية في الإمارات للتواصل مع المشترين والتوسع لاحقاً.'
+    }
+  },
+  {
+    icon: 'message',
+    title: { en: 'Inquiry', ar: 'الاستفسار' },
+    label: { en: 'Direct contact', ar: 'تواصل مباشر' },
+    copy: {
+      en: 'The quote basket keeps the next step simple: select categories, prepare a message, and start the discussion.',
+      ar: 'تجعل سلة طلب السعر الخطوة التالية بسيطة: اختر الفئات وجهز الرسالة وابدأ النقاش.'
+    }
+  }
+] as const;
+
+export const qualityNotes = [
+  {
+    icon: 'layers',
+    title: { en: 'Category clarity', ar: 'وضوح الفئات' },
+    copy: {
+      en: 'Six focused staple groups let buyers quickly identify what they need and start a direct sourcing conversation.',
+      ar: 'ست فئات أساسية مركزة تساعد المشترين على تحديد ما يحتاجونه بسرعة وبدء نقاش توريد مباشر.'
+    }
+  },
+  {
+    icon: 'clipboard',
+    title: { en: 'Practical details', ar: 'تفاصيل عملية' },
+    copy: {
+      en: 'Each inquiry covers product category, pack size, approximate quantity, destination, and any document requirements.',
+      ar: 'يتضمن كل استفسار فئة المنتج وحجم العبوة والكمية التقريبية والوجهة وأي متطلبات للمستندات.'
+    }
+  },
+  {
+    icon: 'message',
+    title: { en: 'Responsive inquiry flow', ar: 'تدفق استفسار سريع' },
+    copy: {
+      en: 'Buyers can move from category selection to a prepared inquiry message with no form or account required.',
+      ar: 'يمكن للمشترين الانتقال من تحديد الفئة إلى رسالة استفسار جاهزة دون نموذج أو حساب.'
+    }
+  },
+  {
+    icon: 'shield',
+    title: { en: 'Direct communication', ar: 'تواصل مباشر' },
+    copy: {
+      en: 'Al Kesra confirms product and sourcing details during the inquiry — information is shared directly, not assumed in advance.',
+      ar: 'تؤكد الكسرة تفاصيل المنتج والتوريد أثناء الاستفسار — تُشارَك المعلومات مباشرةً ولا تُفترض مسبقاً.'
+    }
+  }
+] as const;
+
+export const inquiryPrompts = [
+  { en: 'Product category', ar: 'فئة المنتج' },
+  { en: 'Buyer type', ar: 'نوع المشتري' },
+  { en: 'Approximate quantity', ar: 'الكمية التقريبية' },
+  { en: 'Preferred pack size', ar: 'حجم العبوة المفضل' },
+  { en: 'Destination or delivery area', ar: 'الوجهة أو منطقة التسليم' },
+  { en: 'Timing or document needs', ar: 'الموعد أو المستندات المطلوبة' }
+] as const;
+
+export const common = {
+  skip: { en: 'Skip to content', ar: 'تجاوز إلى المحتوى' },
+  quote: {
+    title: { en: 'Quote basket', ar: 'سلة طلب السعر' },
+    empty: { en: 'Select product categories to prepare an inquiry.', ar: 'اختر فئات المنتجات لإعداد طلب استفسار.' },
+    add: { en: 'Add to quote', ar: 'أضف إلى الطلب' },
+    remove: { en: 'Remove', ar: 'إزالة' },
+    clear: { en: 'Clear', ar: 'مسح' },
+    send: { en: 'Prepare WhatsApp inquiry', ar: 'إعداد استفسار واتساب' }
+  },
+  ctas: {
+    products: { en: 'Explore products', ar: 'تصفح المنتجات' },
+    contact: { en: 'Contact us', ar: 'تواصل معنا' },
+    quote: { en: 'Build a quote', ar: 'أنشئ طلب سعر' },
+    email: { en: 'Email Al Kesra', ar: 'راسل الكسرة' }
+  }
+};
+
+export const pages = {
+  home: {
+    meta: {
+      en: {
+        title: 'Al Kesra International LLC - Indian Foodstuff Trading in UAE',
+        description: 'Al Kesra International LLC imports Indian foodstuff essentials for UAE retail, wholesale, hospitality, and household needs.'
+      },
+      ar: {
+        title: 'شركة الكسرة الدولية - تجارة المواد الغذائية الهندية في الإمارات',
+        description: 'تستورد شركة الكسرة الدولية المواد الغذائية الهندية الأساسية لاحتياجات التجزئة والجملة والضيافة والأسر في الإمارات.'
+      }
+    },
+    hero: {
+      image: '/images/hero-ingredients.jpg',
+      eyebrow: { en: 'Premium Spice Route Trading', ar: 'تجارة راقية بروح طريق التوابل' },
+      title: { en: company.name, ar: 'شركة الكسرة الدولية ذ.م.م' },
+      lead: {
+        en: 'UAE-based foodstuff trading with a focused connection to Indian staples, ingredient-led categories, and responsive buyer support.',
+        ar: 'تجارة مواد غذائية من الإمارات بتركيز على السلع الهندية الأساسية وفئات واضحة ودعم سريع للمشترين.'
+      }
+    },
+    stats: [
+      { en: 'UAE based', ar: 'من الإمارات' },
+      { en: 'Indian staples', ar: 'سلع هندية أساسية' },
+      { en: 'Wholesale ready', ar: 'جاهزة للجملة' }
+    ],
+    route: {
+      title: { en: 'A steady bridge for everyday food essentials', ar: 'جسر ثابت للمواد الغذائية اليومية' },
+      copy: {
+        en: 'Al Kesra brings the warmth of Indian harvests into a practical UAE trading model built for retailers, kitchens, and growing food businesses.',
+        ar: 'تنقل الكسرة دفء المحاصيل الهندية إلى نموذج تجارة عملي في الإمارات يخدم التجار والمطابخ وأعمال الأغذية النامية.'
+      }
+    }
+  },
+  about: {
+    meta: {
+      en: {
+        title: 'About Al Kesra International LLC',
+        description: 'Learn about Al Kesra International LLC, a Ras Al Khaimah foodstuff company importing Indian staples.'
+      },
+      ar: {
+        title: 'عن شركة الكسرة الدولية',
+        description: 'تعرف على شركة الكسرة الدولية في رأس الخيمة واستيرادها للمواد الغذائية الهندية الأساسية.'
+      }
+    },
+    hero: {
+      image: '/images/about-trade.jpg',
+      eyebrow: { en: 'About Al Kesra', ar: 'عن الكسرة' },
+      title: { en: 'Rooted in trade, guided by trust', ar: 'جذورنا في التجارة وقيمتنا في الثقة' },
+      lead: {
+        en: 'Al Kesra International LLC is a Ras Al Khaimah foodstuff company focused on importing everyday staples from India with care, consistency, and clear communication.',
+        ar: 'شركة الكسرة الدولية ذ.م.م هي شركة مواد غذائية في رأس الخيمة تركز على استيراد السلع اليومية من الهند بعناية واتساق وتواصل واضح.'
+      }
+    },
+    values: [
+      {
+        title: { en: 'Origin with purpose', ar: 'مصدر واضح الهدف' },
+        copy: { en: 'Indian sourcing is part of the brand story, but the buyer experience stays practical and UAE-focused.', ar: 'التوريد من الهند جزء من قصة العلامة، مع تجربة عملية تركز على احتياجات السوق الإماراتي.' }
+      },
+      {
+        title: { en: 'Clear categories', ar: 'فئات واضحة' },
+        copy: { en: 'A focused range helps buyers ask for the right essentials without browsing through unnecessary complexity.', ar: 'مجموعة مركزة تساعد المشترين على طلب الأساسيات المناسبة دون تعقيد غير ضروري.' }
+      },
+      {
+        title: { en: 'Responsive service', ar: 'خدمة سريعة الاستجابة' },
+        copy: { en: 'Inquiry, category discussion, and sourcing coordination are handled through direct, professional communication.', ar: 'تتم إدارة الاستفسارات ومناقشة الفئات وتنسيق التوريد بتواصل مباشر ومهني.' }
+      }
+    ]
+  },
+  products: {
+    meta: {
+      en: {
+        title: 'Foodstuff Product Categories - Al Kesra',
+        description: 'Explore Al Kesra product categories including rice, grains, flour, pulses, spices, oils, and packaged goods.'
+      },
+      ar: {
+        title: 'فئات المنتجات الغذائية - الكسرة',
+        description: 'تصفح فئات منتجات الكسرة مثل الأرز والحبوب والدقيق والبقوليات والتوابل والزيوت والمواد المعبأة.'
+      }
+    },
+    hero: {
+      image: '/images/products-spread.jpg',
+      eyebrow: { en: 'Product categories', ar: 'فئات المنتجات' },
+      title: { en: 'Essential categories for trade and everyday kitchens', ar: 'فئات أساسية للتجارة والمطابخ اليومية' },
+      lead: {
+        en: 'A focused portfolio of Indian foodstuff categories for retailers, food service teams, and household pantry supply.',
+        ar: 'مجموعة مركزة من فئات المواد الغذائية الهندية للتجار وفرق خدمات الطعام ومخزون الأسر.'
+      }
+    }
+  },
+  quality: {
+    meta: {
+      en: {
+        title: 'Quality Approach - Al Kesra',
+        description: 'Al Kesra approaches sourcing, packaging needs, and buyer communication with care and consistency.'
+      },
+      ar: {
+        title: 'نهج الجودة - الكسرة',
+        description: 'تتعامل الكسرة مع التوريد واحتياجات التغليف والتواصل مع المشترين بعناية واتساق.'
+      }
+    },
+    hero: {
+      image: '/images/quality-packaging.jpg',
+      eyebrow: { en: 'Quality approach', ar: 'نهج الجودة' },
+      title: { en: 'Care in every category conversation', ar: 'عناية واضحة في كل استفسار' },
+      lead: {
+        en: 'We approach foodstuff trading with attention to product suitability, packaging needs, sourcing coordination, and clear buyer communication.',
+        ar: 'نتعامل مع تجارة المواد الغذائية بعناية تشمل ملاءمة المنتج واحتياجات التغليف وتنسيق التوريد والتواصل الواضح مع المشترين.'
+      }
+    },
+    pillars: [
+      {
+        title: { en: 'Category suitability', ar: 'ملاءمة الفئة' },
+        copy: { en: 'Product discussions begin with the intended buyer, usage, and quantity expectations.', ar: 'تبدأ مناقشات المنتج بفهم المشتري والاستخدام والكمية المتوقعة.' }
+      },
+      {
+        title: { en: 'Packaging awareness', ar: 'الاهتمام بالتغليف' },
+        copy: { en: 'Packaging needs are part of every sourcing discussion — sizes, labeling, and handling are confirmed during the inquiry.', ar: 'تعتبر احتياجات التغليف جزءاً من كل نقاش توريد — تُحدَّد الأحجام والملصقات والمناولة أثناء الاستفسار.' }
+      },
+      {
+        title: { en: 'Clear communication', ar: 'تواصل واضح' },
+        copy: { en: 'The inquiry flow is direct, category-led, and designed to move from interest to a practical discussion.', ar: 'تدفق الاستفسار مباشر ومبني على الفئات وينتقل من الاهتمام إلى نقاش عملي.' }
+      }
+    ]
+  },
+  contact: {
+    meta: {
+      en: {
+        title: 'Contact Al Kesra International LLC',
+        description: 'Contact Al Kesra International LLC in Ras Al Khaimah for foodstuff category inquiries.'
+      },
+      ar: {
+        title: 'تواصل مع شركة الكسرة الدولية',
+        description: 'تواصل مع شركة الكسرة الدولية في رأس الخيمة للاستفسار عن فئات المواد الغذائية.'
+      }
+    },
+    hero: {
+      image: '/images/contact-pantry.jpg',
+      eyebrow: { en: 'Contact', ar: 'تواصل معنا' },
+      title: { en: "Let's start a trade conversation", ar: 'لنبدأ حديثاً تجارياً' },
+      lead: {
+        en: 'For product inquiries, sourcing discussions, or partnership opportunities, connect with Al Kesra International LLC in Ras Al Khaimah.',
+        ar: 'للاستفسارات حول المنتجات أو التوريد أو فرص التعاون، تواصل مع شركة الكسرة الدولية ذ.م.م في رأس الخيمة.'
+      }
+    }
+  }
+} as const;

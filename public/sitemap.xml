@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.alkesra.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/products/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/products/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/products/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/products/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/ar/products/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/products/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/products/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/products/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/contact/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/ar/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/contact/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/ar/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/quality/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/quality/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/quality/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/quality/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.alkesra.com/ar/quality/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alkesra.com/quality/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.alkesra.com/ar/quality/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alkesra.com/quality/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

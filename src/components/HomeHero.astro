@@ -1,0 +1,75 @@
+---
+import Icon from '@/components/Icon.astro';
+import { categories, common, company, pages, routes, type Lang } from '@/data/content';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = pages.home;
+const featuredCategory = categories[0];
+---
+
+<section class="home-hero" data-home-hero style={`--hero-image: url('${withBase(page.hero.image)}')`}>
+  <div class="home-hero__backdrop" data-parallax-bg></div>
+  <div class="home-hero__inner" data-parallax-content>
+    <div class="home-hero__copy">
+      <p class="eyebrow">{page.hero.eyebrow[lang]}</p>
+      <h1>{page.hero.title[lang]}</h1>
+      <p class="hero-lead">{page.hero.lead[lang]}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href={withBase(routes.products[lang])}>{common.ctas.products[lang]}</a>
+        <a class="button button-secondary" href={withBase(routes.contact[lang])}>{common.ctas.contact[lang]}</a>
+      </div>
+      <div class="hero-route" aria-label={lang === 'en' ? 'India to UAE sourcing route' : 'مسار التوريد من الهند إلى الإمارات'}>
+        <p class="eyebrow">{lang === 'en' ? 'Sourcing route' : 'مسار التوريد'}</p>
+        <div class="hero-route__track">
+          <span>{lang === 'en' ? 'India' : 'الهند'}</span>
+          <i aria-hidden="true"></i>
+          <span>{lang === 'en' ? 'UAE' : 'الإمارات'}</span>
+        </div>
+        <small>{lang === 'en' ? 'Ras Al Khaimah, United Arab Emirates' : 'رأس الخيمة، الإمارات العربية المتحدة'}</small>
+      </div>
+    </div>
+
+    <aside class="home-hero__preview" aria-label={lang === 'en' ? 'Featured categories' : 'الفئات البارزة'}>
+      <div class="preview-stage reveal-card" style={`--category-accent: ${featuredCategory.accent}`}>
+        <div class="preview-stage__image">
+          <img
+            src={withBase(featuredCategory.image)}
+            alt={featuredCategory.title[lang]}
+            width="760"
+            height="620"
+            data-hero-preview-image
+          />
+        </div>
+        <div class="preview-stage__content">
+          <span class="preview-stage__kicker">{lang === 'en' ? 'Category preview' : 'لمحة عن الفئة'}</span>
+          <h2 data-hero-preview-title>{featuredCategory.title[lang]}</h2>
+          <p data-hero-preview-copy>{featuredCategory.heroLine[lang]}</p>
+        </div>
+      </div>
+
+      <div class="preview-chips" role="list" aria-label={lang === 'en' ? 'Switch featured category' : 'تغيير الفئة البارزة'}>
+        {categories.map((category, index) => (
+          <button
+            type="button"
+            role="listitem"
+            class:list={['preview-chip', index === 0 && 'is-active']}
+            style={`--category-accent: ${category.accent}`}
+            data-hero-category
+            data-title={category.title[lang]}
+            data-copy={category.heroLine[lang]}
+            data-image={withBase(category.image)}
+            data-accent={category.accent}
+          >
+            <span><Icon name={category.icon} /></span>
+            <strong>{category.short[lang]}</strong>
+          </button>
+        ))}
+      </div>
+    </aside>
+  </div>
+</section>

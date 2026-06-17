@@ -41,11 +41,11 @@ const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss 
       </article>
       <article class="contact-tile">
         <span>WhatsApp</span>
-        <strong>{company.whatsapp[lang]}</strong>
+        <a href={`https://wa.me/${company.whatsapp.replace(/\D/g, '')}`}>{company.whatsapp}</a>
       </article>
       <article class="contact-tile">
         <span>Phone</span>
-        <strong>{company.phone[lang]}</strong>
+        <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
       </article>
     </div>
     <div class="contact-actions">
