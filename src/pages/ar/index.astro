@@ -14,7 +14,12 @@ const page = pages.home;
   <HomeHero lang={lang} />
 
   <section class="trust-strip" aria-label="مميزات الكسرة">
-    {page.stats.map((item) => <span>{item[lang]}</span>)}
+    {page.stats.map((item) => (
+      <span>
+        <strong>{item.number}</strong>
+        <em>{item.label[lang]}</em>
+      </span>
+    ))}
   </section>
 
   <BuyerSegments lang={lang} />
@@ -25,7 +30,7 @@ const page = pages.home;
     <div>
       <p class="eyebrow">وعدنا</p>
       <h2>{company.slogan['ar']}</h2>
-      <p>
+      <p class="section-lead">
         تستورد الكسرة الفئات الغذائية الهندية الأساسية وتوردها مباشرةً لمتاجر التجزئة والمطاعم والموزعين والأسر في الإمارات — بجودة ثابتة وخدمة سريعة الاستجابة من رأس الخيمة.
       </p>
     </div>

@@ -235,9 +235,33 @@ button {
 .nav-quote,
 .button-primary,
 .category-add {
+  position: relative;
+  overflow: hidden;
   background: var(--orange);
   color: var(--white);
   box-shadow: 0 14px 28px rgba(241, 90, 26, 0.24);
+}
+
+.button-primary::after,
+.nav-quote::after,
+.category-add::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.button-primary:hover::after,
+.nav-quote:hover::after,
+.category-add:hover::after {
+  animation: btnShimmer 680ms ease;
 }
 
 .language-switch:hover,
@@ -692,14 +716,32 @@ button {
 }
 
 .trust-strip span {
-  min-height: 70px;
+  min-height: 90px;
   display: grid;
   place-items: center;
+  gap: 4px;
   border-inline-end: 1px solid var(--line);
-  padding: 12px;
-  color: var(--green);
-  font-weight: 900;
+  padding: 16px 12px;
   text-align: center;
+}
+
+.trust-strip strong {
+  display: block;
+  color: var(--green);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.trust-strip em {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .trust-strip span:last-child {
@@ -732,10 +774,12 @@ button {
   letter-spacing: 0;
 }
 
+.section-lead,
 .section-header p:not(.eyebrow),
-.split-section p,
-.editorial-band p,
-.product-explorer__intro p {
+.split-section p:not(.eyebrow),
+.editorial-band p:not(.eyebrow),
+.product-explorer__intro p:not(.eyebrow),
+.process-ribbon p:not(.eyebrow) {
   margin: 18px 0 0;
   color: var(--ink-soft);
   font-size: 1.04rem;
@@ -1615,6 +1659,7 @@ button {
 
 .site-footer {
   margin-top: 0;
+  clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
   background:
     linear-gradient(135deg, rgba(23, 63, 53, 0.98), rgba(32, 33, 29, 0.96)),
     var(--green);
@@ -1832,6 +1877,11 @@ button {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+@keyframes btnShimmer {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(220%); }
 }
 
 @keyframes routePulse {

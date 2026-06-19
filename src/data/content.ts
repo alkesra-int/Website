@@ -13,7 +13,7 @@ export const company = {
     en: "From India's Harvests to the World",
     ar: 'من محاصيل الهند إلى العالم'
   },
-  email: 'alkesra.int@gmail.com',
+  email: 'contact@alkesra.com',
   phone: '+971 50 121 8605',
   whatsapp: '+971 50 121 8025',
   location: {
@@ -376,9 +376,9 @@ export const pages = {
       }
     },
     stats: [
-      { en: 'Ras Al Khaimah, UAE', ar: 'رأس الخيمة، الإمارات' },
-      { en: 'Indian staples', ar: 'سلع هندية أساسية' },
-      { en: 'Wholesale ready', ar: 'جاهزة للجملة' }
+      { number: '6', label: { en: 'Food categories', ar: 'فئات غذائية' } },
+      { number: '100%', label: { en: 'Indian origin', ar: 'منشأ هندي' } },
+      { number: 'GCC', label: { en: 'Supply reach', ar: 'نطاق التوريد' } }
     ],
     route: {
       title: { en: 'A steady bridge for everyday food essentials', ar: 'جسر ثابت للمواد الغذائية اليومية' },
