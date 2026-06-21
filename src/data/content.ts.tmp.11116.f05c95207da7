@@ -198,13 +198,13 @@ export const categories = [
     bubbles: [
       { icon: 'boxed', label: { en: 'Assortment', ar: 'تشكيلة' } },
       { icon: 'layers', label: { en: 'Future list', ar: 'قائمة مستقبلية' } },
-      { icon: 'message', label: { en: 'Quote ready', ar: 'جاهز للاستفسار' } }
+      { icon: 'message', label: { en: 'Inquiry ready', ar: 'جاهز للاستفسار' } }
     ],
     detail: {
       en: 'A flexible pantry category for future product-list expansion, retail assortment discussions, and steady packaged-food inquiries.',
       ar: 'فئة مرنة قابلة للتوسع لاحقاً لقوائم المنتجات ونقاشات تشكيلة التجزئة واستفسارات المواد الغذائية المعبأة.'
     },
-    bestFor: { en: 'Retail assortment, pantry stock, quote requests', ar: 'تشكيلة التجزئة، مخزون الأسر، طلبات السعر' },
+    bestFor: { en: 'Retail assortment, pantry stock, pricing inquiries', ar: 'تشكيلة التجزئة، مخزون الأسر، استفسارات السعر' },
     segments: ['retail', 'household', 'wholesale'],
     accent: '#2D6F7A'
   }
@@ -286,8 +286,8 @@ export const routeSteps = [
     title: { en: 'Inquiry', ar: 'الاستفسار' },
     label: { en: 'Direct contact', ar: 'تواصل مباشر' },
     copy: {
-      en: 'The quote basket keeps the next step simple: select categories, prepare a message, and start the discussion.',
-      ar: 'تجعل سلة طلب السعر الخطوة التالية بسيطة: اختر الفئات وجهز الرسالة وابدأ النقاش.'
+      en: 'The inquiry basket keeps the next step simple: select categories, prepare a message, and start the discussion.',
+      ar: 'تجعل سلة الاستفسار الخطوة التالية بسيطة: اختر الفئات وجهز الرسالة وابدأ النقاش.'
     }
   }
 ] as const;
@@ -339,17 +339,17 @@ export const inquiryPrompts = [
 export const common = {
   skip: { en: 'Skip to content', ar: 'تجاوز إلى المحتوى' },
   quote: {
-    title: { en: 'Quote basket', ar: 'سلة طلب السعر' },
-    empty: { en: 'Select product categories to prepare an inquiry.', ar: 'اختر فئات المنتجات لإعداد طلب استفسار.' },
-    add: { en: 'Add to quote', ar: 'أضف إلى الطلب' },
+    title: { en: 'Inquiry basket', ar: 'سلة الاستفسار' },
+    empty: { en: 'Select product categories to prepare a pricing inquiry.', ar: 'اختر فئات المنتجات لإعداد استفسار سعر.' },
+    add: { en: 'Add to inquiry', ar: 'أضف إلى الاستفسار' },
     remove: { en: 'Remove', ar: 'إزالة' },
     clear: { en: 'Clear', ar: 'مسح' },
-    send: { en: 'Prepare WhatsApp inquiry', ar: 'إعداد استفسار واتساب' }
+    send: { en: 'Send via WhatsApp', ar: 'إرسال عبر واتساب' }
   },
   ctas: {
     products: { en: 'Explore products', ar: 'تصفح المنتجات' },
     contact: { en: 'Contact us', ar: 'تواصل معنا' },
-    quote: { en: 'Build a quote', ar: 'أنشئ طلب سعر' },
+    quote: { en: 'Request pricing', ar: 'اطلب السعر' },
     email: { en: 'Email Al Kesra', ar: 'راسل الكسرة' }
   }
 };

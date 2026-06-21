@@ -10,15 +10,15 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<section class="product-explorer" data-product-explorer>
+<section class="product-explorer" id="product-inquiry" data-product-explorer>
   <div class="product-explorer__intro">
     <div>
       <p class="eyebrow">{lang === 'en' ? 'Our products' : 'منتجاتنا'}</p>
       <h2>{lang === 'en' ? 'Six Indian foodstuff categories, ready to supply' : 'ست فئات من المواد الغذائية الهندية، جاهزة للتوريد'}</h2>
       <p class="section-lead">
         {lang === 'en'
-          ? 'Browse by buyer type, explore each category, and add what you need to your quote request. Al Kesra will follow up with pricing, pack options, and availability.'
-          : 'تصفح حسب نوع المشتري، واستكشف كل فئة، وأضف ما تحتاجه إلى طلب الاستفسار. سيتابع معك فريق الكسرة في الأسعار وخيارات التعبئة والتوفر.'}
+          ? 'Browse by buyer type, review each category, and add what you need to your inquiry basket. Al Kesra will follow up with pricing, pack options, and availability.'
+          : 'تصفح حسب نوع المشتري، وراجع كل فئة، وأضف ما تحتاجه إلى سلة الاستفسار. سيتابع معك فريق الكسرة في الأسعار وخيارات التعبئة والتوفر.'}
       </p>
     </div>
     <div class="explorer-meter" aria-hidden="true">
@@ -80,7 +80,7 @@ const { lang } = Astro.props;
               data-category-open={category.id}
               aria-controls={`category-modal-${category.id}`}
             >
-              {lang === 'en' ? 'View story' : 'عرض القصة'}
+              {lang === 'en' ? 'View details' : 'عرض التفاصيل'}
             </button>
           </div>
         </div>
@@ -105,7 +105,7 @@ const { lang } = Astro.props;
           <img src={withBase(category.image)} alt={category.title[lang]} loading="lazy" width="1040" height="760" />
         </div>
         <div class="category-modal__body">
-          <p class="eyebrow">{lang === 'en' ? 'Category story' : 'قصة الفئة'}</p>
+          <p class="eyebrow">{lang === 'en' ? 'Category details' : 'تفاصيل الفئة'}</p>
           <h2 id={`category-modal-title-${category.id}`}>{category.title[lang]}</h2>
           <p>{category.modalSummary[lang]}</p>
           <div class="modal-bubbles">

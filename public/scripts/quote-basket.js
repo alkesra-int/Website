@@ -11,16 +11,22 @@
   ]);
   const texts = {
     en: {
+      add: 'Add to inquiry',
+      added: 'Added to inquiry',
       remove: 'Remove',
-      empty: 'Select product categories to prepare an inquiry.',
-      send: 'Prepare WhatsApp inquiry',
+      removeCategory: 'Remove from inquiry',
+      empty: 'Select product categories to prepare a pricing inquiry.',
+      send: 'Send via WhatsApp',
       messageIntro: 'Hello Al Kesra, I would like to discuss these foodstuff categories:',
       messageOutro: 'This is an inquiry request only. Please share product details when available.'
     },
     ar: {
+      add: 'أضف إلى الاستفسار',
+      added: 'مضاف إلى الاستفسار',
       remove: 'إزالة',
-      empty: 'اختر فئات المنتجات لإعداد طلب استفسار.',
-      send: 'إعداد استفسار واتساب',
+      removeCategory: 'إزالة من الاستفسار',
+      empty: 'اختر فئات المنتجات لإعداد استفسار سعر.',
+      send: 'إرسال عبر واتساب',
       messageIntro: 'مرحباً شركة الكسرة، أود الاستفسار عن فئات المواد الغذائية التالية:',
       messageOutro: 'هذا طلب استفسار فقط. يرجى مشاركة تفاصيل المنتجات عند توفرها.'
     }
@@ -42,8 +48,13 @@
   const copy = basket.querySelector('[data-quote-copy]');
   const note = basket.querySelector('[data-quote-note]');
   const feedback = basket.querySelector('[data-quote-feedback]');
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   let items = readItems();
+  let attentionTimer = 0;
+
+  if (empty) empty.textContent = texts[lang].empty;
+  if (send) send.textContent = texts[lang].send;
 
   function quoteButtons() {
     return Array.from(document.querySelectorAll('[data-quote-add]'));
@@ -99,6 +110,39 @@
     return [texts[lang].messageIntro, ...lines, ...noteValue, '', texts[lang].messageOutro].join('\n');
   }
 
+  function spotlightBasket() {
+    window.clearTimeout(attentionTimer);
+    basket.classList.add('is-attention');
+    attentionTimer = window.setTimeout(() => {
+      basket.classList.remove('is-attention');
+    }, 1200);
+  }
+
+  function animateToBasket(source, label) {
+    if (reduceMotionQuery.matches || !source || !count) return;
+
+    const startRect = source.getBoundingClientRect();
+    const endRect = count.getBoundingClientRect();
+
+    if (!startRect.width || !startRect.height || !endRect.width || !endRect.height) return;
+
+    const startX = startRect.left + startRect.width / 2;
+    const startY = startRect.top + startRect.height / 2;
+    const endX = endRect.left + endRect.width / 2;
+    const endY = endRect.top + endRect.height / 2;
+    const flyer = document.createElement('span');
+
+    flyer.className = 'quote-flyer';
+    flyer.textContent = label;
+    flyer.style.left = `${startX}px`;
+    flyer.style.top = `${startY}px`;
+    flyer.style.setProperty('--fly-x', `${endX - startX}px`);
+    flyer.style.setProperty('--fly-y', `${endY - startY}px`);
+
+    document.body.appendChild(flyer);
+    flyer.addEventListener('animationend', () => flyer.remove(), { once: true });
+  }
+
   function flash(message) {
     if (!feedback) return;
     feedback.hidden = false;
@@ -135,6 +179,8 @@
       const selected = items.some((item) => item.id === button.dataset.id);
       button.classList.toggle('is-selected', selected);
       button.setAttribute('aria-pressed', String(selected));
+      button.textContent = selected ? texts[lang].added : texts[lang].add;
+      button.setAttribute('aria-label', selected ? texts[lang].removeCategory : texts[lang].add);
     });
 
     if (items.length === 0) {
@@ -200,11 +246,25 @@
     if (!validIds.has(next.id) || !next.titleEn || !next.titleAr) return;
 
     const exists = items.some((item) => item.id === next.id);
+
+    if (!exists) {
+      animateToBasket(button, itemLabel(next));
+    }
+
     items = exists ? items.filter((item) => item.id !== next.id) : [...items, next];
     writeItems();
     render();
     openPanel();
-    if (!exists) flash(lang === 'ar' ? 'تمت إضافة الفئة' : 'Category added');
+    document.dispatchEvent(new CustomEvent('al-kesra:inquiry-change', {
+      detail: {
+        id: next.id,
+        added: !exists
+      }
+    }));
+    if (!exists) {
+      spotlightBasket();
+      flash(lang === 'ar' ? 'تمت الإضافة إلى الاستفسار' : 'Added to inquiry');
+    }
   });
 
   render();

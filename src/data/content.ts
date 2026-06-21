@@ -198,13 +198,13 @@ export const categories = [
     bubbles: [
       { icon: 'boxed', label: { en: 'Canned & dry', ar: 'معلبة وجافة' } },
       { icon: 'layers', label: { en: 'Retail packs', ar: 'عبوات تجزئة' } },
-      { icon: 'message', label: { en: 'Quote ready', ar: 'جاهز للاستفسار' } }
+      { icon: 'message', label: { en: 'Inquiry ready', ar: 'جاهز للاستفسار' } }
     ],
     detail: {
       en: 'A growing range of Indian canned and packaged pantry goods for retail assortment, catering supply, and household stocking.',
       ar: 'مجموعة متنامية من المعلبات والمواد الغذائية الهندية المعبأة لتشكيلة التجزئة وتوريد التموين والمخزون المنزلي.'
     },
-    bestFor: { en: 'Retail assortment, pantry stock, quote requests', ar: 'تشكيلة التجزئة، مخزون الأسر، طلبات السعر' },
+    bestFor: { en: 'Retail assortment, pantry stock, pricing inquiries', ar: 'تشكيلة التجزئة، مخزون الأسر، استفسارات السعر' },
     segments: ['retail', 'household', 'wholesale'],
     accent: '#2D6F7A'
   }
@@ -339,17 +339,17 @@ export const inquiryPrompts = [
 export const common = {
   skip: { en: 'Skip to content', ar: 'تجاوز إلى المحتوى' },
   quote: {
-    title: { en: 'Quote basket', ar: 'سلة طلب السعر' },
-    empty: { en: 'Select product categories to prepare an inquiry.', ar: 'اختر فئات المنتجات لإعداد طلب استفسار.' },
-    add: { en: 'Add to quote', ar: 'أضف إلى الطلب' },
+    title: { en: 'Inquiry basket', ar: 'سلة الاستفسار' },
+    empty: { en: 'Select product categories to prepare a pricing inquiry.', ar: 'اختر فئات المنتجات لإعداد استفسار سعر.' },
+    add: { en: 'Add to inquiry', ar: 'أضف إلى الاستفسار' },
     remove: { en: 'Remove', ar: 'إزالة' },
     clear: { en: 'Clear', ar: 'مسح' },
-    send: { en: 'Send WhatsApp inquiry', ar: 'إرسال استفسار واتساب' }
+    send: { en: 'Send via WhatsApp', ar: 'إرسال عبر واتساب' }
   },
   ctas: {
     products: { en: 'Explore products', ar: 'تصفح المنتجات' },
     contact: { en: 'Contact us', ar: 'تواصل معنا' },
-    quote: { en: 'Build a quote', ar: 'أنشئ طلب سعر' },
+    quote: { en: 'Request pricing', ar: 'اطلب السعر' },
     email: { en: 'Email Al Kesra', ar: 'راسل الكسرة' }
   }
 };

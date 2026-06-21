@@ -2,7 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
 import ProductExplorer from '@/components/ProductExplorer.astro';
-import { pages } from '@/data/content';
+import { common, pages, routes } from '@/data/content';
+import { withBase } from '@/utils/paths';
 
 const lang = 'en';
 const page = pages.products;
@@ -16,6 +17,8 @@ const page = pages.products;
     lead={page.hero.lead[lang]}
     image={page.hero.image}
     imageAlt="Assorted grains, pulses, and spices for foodstuff trading"
+    primaryCta={{ label: 'Select categories', href: '#product-inquiry' }}
+    secondaryCta={{ label: common.ctas.contact[lang], href: withBase(routes.contact[lang]) }}
   />
 
   <ProductExplorer lang={lang} />

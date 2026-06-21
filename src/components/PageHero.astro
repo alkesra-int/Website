@@ -1,6 +1,11 @@
 ---
-import type { Lang } from '@/data/content';
+import { common, routes, type Lang } from '@/data/content';
 import { withBase } from '@/utils/paths';
+
+interface HeroCta {
+  label: string;
+  href: string;
+}
 
 interface Props {
   lang: Lang;
@@ -9,9 +14,21 @@ interface Props {
   lead: string;
   image: string;
   imageAlt: string;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
 }
 
-const { lang, eyebrow, title, lead, image, imageAlt } = Astro.props;
+const { lang, eyebrow, title, lead, image, imageAlt, primaryCta, secondaryCta } = Astro.props;
+const defaultPrimaryCta = {
+  label: common.ctas.products[lang],
+  href: withBase(`${routes.products[lang]}#product-inquiry`)
+};
+const defaultSecondaryCta = {
+  label: common.ctas.contact[lang],
+  href: withBase(routes.contact[lang])
+};
+const primary = primaryCta ?? defaultPrimaryCta;
+const secondary = secondaryCta ?? defaultSecondaryCta;
 ---
 
 <section class="page-hero" style={`--hero-image: url('${withBase(image)}')`} aria-label={imageAlt}>
@@ -23,8 +40,8 @@ const { lang, eyebrow, title, lead, image, imageAlt } = Astro.props;
       <h1>{title}</h1>
       <p class="hero-lead">{lead}</p>
       <div class="hero-actions">
-        <a class="button button-primary" href={withBase(lang === 'en' ? '/products/' : '/ar/products/')}>{lang === 'en' ? 'Explore products' : 'تصفح المنتجات'}</a>
-        <a class="button button-secondary" href={withBase(lang === 'en' ? '/contact/' : '/ar/contact/')}>{lang === 'en' ? 'Contact us' : 'تواصل معنا'}</a>
+        <a class="button button-primary" href={primary.href}>{primary.label}</a>
+        <a class="button button-secondary" href={secondary.href}>{secondary.label}</a>
       </div>
     </div>
     <div class="hero-panel reveal-card">

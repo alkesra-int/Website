@@ -10,6 +10,7 @@ interface Props {
 const { lang } = Astro.props;
 const page = pages.home;
 const featuredCategory = categories[0];
+const productInquiryHref = `${routes.products[lang]}#product-inquiry`;
 ---
 
 <section class="home-hero" data-home-hero style={`--hero-image: url('${withBase(page.hero.image)}')`}>
@@ -20,7 +21,7 @@ const featuredCategory = categories[0];
       <h1>{page.hero.title[lang]}</h1>
       <p class="hero-lead">{page.hero.lead[lang]}</p>
       <div class="hero-actions">
-        <a class="button button-primary" href={withBase(routes.products[lang])}>{common.ctas.products[lang]}</a>
+        <a class="button button-primary" href={withBase(productInquiryHref)}>{common.ctas.products[lang]}</a>
         <a class="button button-secondary" href={withBase(routes.contact[lang])}>{common.ctas.contact[lang]}</a>
       </div>
       <div class="hero-route" aria-label={lang === 'en' ? 'India to UAE sourcing route' : 'مسار التوريد من الهند إلى الإمارات'}>

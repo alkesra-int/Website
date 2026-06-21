@@ -9,6 +9,7 @@ interface Props {
 
 const { lang, pageKey } = Astro.props;
 const otherLang: Lang = lang === 'en' ? 'ar' : 'en';
+const inquiryHref = `${routes.products[lang]}#product-inquiry`;
 ---
 
 <header class="site-header">
@@ -38,7 +39,7 @@ const otherLang: Lang = lang === 'en' ? 'ar' : 'en';
       <a class="language-switch" href={withBase(routes[pageKey][otherLang])} hreflang={otherLang}>
         {otherLang === 'ar' ? 'عربي' : 'EN'}
       </a>
-      <a class="nav-quote" href={withBase(routes.products[lang])}>{common.ctas.quote[lang]}</a>
+      <a class="nav-quote" href={withBase(inquiryHref)}>{common.ctas.quote[lang]}</a>
     </div>
   </nav>
 </header>

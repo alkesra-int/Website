@@ -9,6 +9,8 @@ const lang = 'en';
 const page = pages.contact;
 const mailSubject = encodeURIComponent('Al Kesra product inquiry');
 const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss foodstuff categories and sourcing options.\n\nCompany:\nPhone:\nMessage:');
+const mailHref = `mailto:${company.email}?subject=${mailSubject}&body=${mailBody}`;
+const productInquiryHref = withBase('/products/#product-inquiry');
 ---
 
 <BaseLayout lang={lang} pageKey="contact" title={page.meta[lang].title} description={page.meta[lang].description}>
@@ -19,13 +21,15 @@ const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss 
     lead={page.hero.lead[lang]}
     image={page.hero.image}
     imageAlt="Pantry ingredients arranged for a foodstuff inquiry"
+    primaryCta={{ label: common.ctas.quote[lang], href: productInquiryHref }}
+    secondaryCta={{ label: common.ctas.email[lang], href: mailHref }}
   />
 
   <section class="content-band">
     <SectionHeader
       eyebrow="Contact details"
       title="Reach Al Kesra in Ras Al Khaimah"
-      copy="Use email now, or build a category inquiry with the quote basket. For a faster reply, include the category, buyer type, approximate quantity, preferred pack size, destination, and any document needs."
+      copy="For the clearest pricing follow-up, select product categories and send the prepared WhatsApp inquiry. You can also email Al Kesra directly with category, buyer type, approximate quantity, pack size, destination, and document needs."
     />
     <div class="prompt-strip">
       {inquiryPrompts.map((prompt) => <span>{prompt[lang]}</span>)}
@@ -33,7 +37,7 @@ const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss 
     <div class="contact-grid">
       <article class="contact-tile">
         <span>Email</span>
-        <a href={`mailto:${company.email}?subject=${mailSubject}&body=${mailBody}`}>{company.email}</a>
+        <a href={mailHref}>{company.email}</a>
       </article>
       <article class="contact-tile">
         <span>Location</span>
@@ -49,8 +53,8 @@ const mailBody = encodeURIComponent('Hello Al Kesra,\n\nI would like to discuss 
       </article>
     </div>
     <div class="contact-actions">
-      <a class="button button-primary" href={`mailto:${company.email}?subject=${mailSubject}&body=${mailBody}`}>{common.ctas.email[lang]}</a>
-      <a class="button button-secondary" href={withBase('/products/')}>{common.ctas.quote[lang]}</a>
+      <a class="button button-primary" href={productInquiryHref}>{common.ctas.quote[lang]}</a>
+      <a class="button button-secondary" href={mailHref}>{common.ctas.email[lang]}</a>
     </div>
   </section>
 </BaseLayout>

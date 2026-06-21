@@ -17,9 +17,9 @@ const { lang } = Astro.props;
     <div class="quote-basket__header">
       <div class="quote-basket__header-text">
         <h2>{common.quote.title[lang]}</h2>
-        <p>{lang === 'en' ? 'Select categories to build your inquiry' : 'اختر الفئات لإعداد استفسارك'}</p>
+        <p>{lang === 'en' ? 'Select categories for pricing follow-up' : 'اختر الفئات لمتابعة الأسعار'}</p>
       </div>
-      <button type="button" data-quote-close aria-label={lang === 'en' ? 'Close quote basket' : 'إغلاق سلة طلب السعر'}>×</button>
+      <button type="button" data-quote-close aria-label={lang === 'en' ? 'Close inquiry basket' : 'إغلاق سلة الاستفسار'}>×</button>
     </div>
     <div class="quote-basket__body">
       <p class="quote-basket__empty" data-quote-empty>{common.quote.empty[lang]}</p>
