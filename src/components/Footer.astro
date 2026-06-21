@@ -13,8 +13,14 @@ const { lang } = Astro.props;
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href={withBase(routes.home[lang])} aria-label={company.name}>
-        <img src={withBase('/images/al-kesra-logo.png')} alt={lang === 'en' ? 'Al Kesra International LLC logo' : 'شعار شركة الكسرة الدولية'} width="120" height="74" />
+      <a href={withBase(routes.home[lang])} aria-label={company.name} class="footer-brand-mark">
+        <span class="footer-brand-icon" aria-hidden="true">
+          <img src={withBase('/images/al-kesra-logo-mark.svg')} alt="" width="28" height="42" />
+        </span>
+        <span class="footer-brand-name">
+          <strong>{lang === 'en' ? 'Al Kesra' : company.arabicName}</strong>
+          <small>{lang === 'en' ? 'International LLC' : 'الدولية ذ.م.م'}</small>
+        </span>
       </a>
       <p class="eyebrow">{lang === 'en' ? 'UAE based foodstuff trading' : 'تجارة مواد غذائية من الإمارات'}</p>
       <h2>{company.slogan[lang]}</h2>
