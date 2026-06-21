@@ -1,6 +1,7 @@
 ---
 import Icon from '@/components/Icon.astro';
 import { categories, common, segmentFilters, type Lang } from '@/data/content';
+import { productRangesByCategory } from '@/data/productRange';
 import { withBase } from '@/utils/paths';
 
 interface Props {
@@ -13,18 +14,18 @@ const { lang } = Astro.props;
 <section class="product-explorer" id="product-inquiry" data-product-explorer>
   <div class="product-explorer__intro">
     <div>
-      <p class="eyebrow">{lang === 'en' ? 'Our products' : 'منتجاتنا'}</p>
-      <h2>{lang === 'en' ? 'Six Indian foodstuff categories, ready to supply' : 'ست فئات من المواد الغذائية الهندية، جاهزة للتوريد'}</h2>
+      <p class="eyebrow">{lang === 'en' ? 'Product range' : 'نطاق المنتجات'}</p>
+      <h2>{lang === 'en' ? 'Detailed product lines, organized for quick inquiry' : 'خطوط منتجات تفصيلية منظمة لاستفسار سريع'}</h2>
       <p class="section-lead">
         {lang === 'en'
-          ? 'Browse by buyer type, review each category, and add what you need to your inquiry basket. Al Kesra will follow up with pricing, pack options, and availability.'
-          : 'تصفح حسب نوع المشتري، وراجع كل فئة، وأضف ما تحتاجه إلى سلة الاستفسار. سيتابع معك فريق الكسرة في الأسعار وخيارات التعبئة والتوفر.'}
+          ? 'Review the detailed lines inside each category family, filter by buyer type, and add the categories you need to the inquiry basket. Al Kesra confirms specifications, pack sizes, pricing, and availability before committing to supply.'
+          : 'راجع الخطوط التفصيلية داخل كل فئة رئيسية، وصف حسب نوع المشتري، وأضف الفئات التي تحتاجها إلى سلة الاستفسار. تؤكد الكسرة المواصفات وأحجام العبوات والأسعار والتوافر قبل الالتزام بالتوريد.'}
       </p>
     </div>
     <div class="explorer-meter" aria-hidden="true">
       <Icon name="route" />
-      <span>{lang === 'en' ? 'India staples' : 'سلع هندية أساسية'}</span>
-      <i>{lang === 'en' ? 'Ras Al Khaimah based' : 'من رأس الخيمة'}</i>
+      <span>{lang === 'en' ? 'India to UAE' : 'من الهند إلى الإمارات'}</span>
+      <i>{lang === 'en' ? 'Range + inquiry' : 'نطاق واستفسار'}</i>
     </div>
   </div>
 
@@ -54,7 +55,15 @@ const { lang } = Astro.props;
             <Icon name="quote" />
           </div>
           <h3>{category.title[lang]}</h3>
-          <p>{category.heroLine[lang]}</p>
+          <p>{productRangesByCategory[category.id]?.summary[lang] ?? category.heroLine[lang]}</p>
+          <div class="product-line-preview">
+            <strong>{lang === 'en' ? 'Detailed lines' : 'خطوط تفصيلية'}</strong>
+            <div class="product-line-chips">
+              {(productRangesByCategory[category.id]?.highlights[lang] ?? []).map((item) => (
+                <span>{item}</span>
+              ))}
+            </div>
+          </div>
           <div class="bubble-row" aria-label={lang === 'en' ? 'Category notes' : 'ملاحظات الفئة'}>
             {category.bubbles.slice(0, 3).map((bubble) => (
               <span>
@@ -107,7 +116,22 @@ const { lang } = Astro.props;
         <div class="category-modal__body">
           <p class="eyebrow">{lang === 'en' ? 'Category details' : 'تفاصيل الفئة'}</p>
           <h2 id={`category-modal-title-${category.id}`}>{category.title[lang]}</h2>
-          <p>{category.modalSummary[lang]}</p>
+          <p>{productRangesByCategory[category.id]?.summary[lang] ?? category.modalSummary[lang]}</p>
+          <div class="modal-range">
+            <p class="modal-range__title">{lang === 'en' ? 'Product lines' : 'خطوط المنتجات'}</p>
+            <div class="modal-range-grid">
+              {(productRangesByCategory[category.id]?.groups ?? []).map((group) => (
+                <article class="modal-range-group">
+                  <h3>{group.title[lang]}</h3>
+                  <ul class="modal-range-list">
+                    {group.items[lang].map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
           <div class="modal-bubbles">
             {category.bubbles.map((bubble) => (
               <span>

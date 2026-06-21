@@ -427,20 +427,20 @@ export const pages = {
     meta: {
       en: {
         title: 'Foodstuff Product Categories — Al Kesra',
-        description: 'Browse Al Kesra product categories: rice and grains, flour and baking, pulses, spices, oils, and canned and packaged goods — all sourced from India.'
+        description: 'Browse Al Kesra product lines for rice, grains, flour, pulses, spices, sugar, oils, oil seeds, canned food, fresh produce, and disposable support items.'
       },
       ar: {
         title: 'فئات المنتجات الغذائية — الكسرة',
-        description: 'تصفح فئات منتجات الكسرة: أرز وحبوب، دقيق وخبز، بقوليات، توابل، زيوت، ومعلبات ومواد معبأة — كلها مُوردَة من الهند.'
+        description: 'تصفح خطوط منتجات الكسرة للأرز والحبوب والدقيق والبقوليات والتوابل والسكر والزيوت والبذور الزيتية والمعلبات والمنتجات الطازجة والمستلزمات أحادية الاستخدام.'
       }
     },
     hero: {
       image: '/images/products-spread.jpg',
       eyebrow: { en: 'Product categories', ar: 'فئات المنتجات' },
-      title: { en: 'Six Indian foodstuff categories, ready to supply', ar: 'ست فئات غذائية هندية، جاهزة للتوريد' },
+      title: { en: 'Indian foodstuff lines, ready for trade inquiries', ar: 'خطوط مواد غذائية هندية جاهزة للاستفسارات التجارية' },
       lead: {
-        en: 'Rice, flour, pulses, spices, oils, and packaged goods — sourced from India and supplied from Ras Al Khaimah to retailers, restaurants, and wholesale buyers across the UAE.',
-        ar: 'أرز ودقيق وبقوليات وتوابل وزيوت ومواد معبأة — مُوردَة من الهند وموزَّعة من رأس الخيمة للتجار والمطاعم والمشترين بالجملة في الإمارات.'
+        en: 'Rice varieties, grains, flour, pulses, spices, sugar, oils, oil seeds, canned and packaged goods, fruits, vegetables, and support disposables - coordinated from Ras Al Khaimah for UAE buyers.',
+        ar: 'أصناف أرز وحبوب ودقيق وبقوليات وتوابل وسكر وزيوت وبذور زيتية ومعلبات ومواد معبأة وفواكه وخضروات ومستلزمات داعمة أحادية الاستخدام - بتنسيق من رأس الخيمة للمشترين في الإمارات.'
       }
     }
   },
