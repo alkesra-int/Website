@@ -1058,7 +1058,7 @@ button {
 }
 
 .split-section--dark h2,
-.split-section--dark p {
+.split-section--dark p:not(.eyebrow) {
   color: var(--white);
 }
 
@@ -1126,7 +1126,7 @@ button {
   color: var(--white);
 }
 
-.product-explorer__intro p {
+.product-explorer__intro p:not(.eyebrow) {
   max-width: 730px;
   color: rgba(245, 239, 226, 0.76);
 }
